@@ -42,6 +42,28 @@ You can turn them on or off, and you can even dim them to control the percentage
 
 
 ---
+---
+
+# You're in good company
+
+Many companies use feature flags to control the visibility of features in their apps.
+
+<!-- It helps them release faster and safer as well as pull features back in the event of something breaking -->
+
+## TODO: add fade in logo animation of companies
+
+```ts {1|2|3|4}
+Airbnb 
+Netflix
+Facebook
+Google
+
+```
+
+<!-- Now that we've gone over the basics of what a feature flag is and who uses it, why would you want to use a feature flag in your app -->
+
+
+---
 layout: comparison
 clicks: 2
 ---
@@ -89,6 +111,8 @@ Error Banners
 
 
 ---
+layout: comparison
+clicks: 2
 ---
 
 ## Examples
@@ -99,11 +123,26 @@ Release only to internal teams via overrides
 
 <!-- a lot of feature flag providers will allow you to override the value of a feature flag so it can be tested internally -->
 
+::a::
+
+<div v-click="1">
+
 ```typescript 
 
 window.cookie = 'new-button-feature=true'
 
 ```
+</div>
+
+::b::
+
+<div v-click="2">
+
+```typescript 
+ https://my-awesome-site.com?new-button-feature=true
+```
+
+</div>
 
 ---
 ---
@@ -115,27 +154,6 @@ Quickly roll back a feature in production
 <!--  Disable your changes in seconds without having to roll back or forward fix a deployment, which could take 10 - 15 minutes -->
 
 <img src="/roll-back.gif" class="m-2" />
-
----
----
-
-# You're in good company
-
-Many companies use feature flags to control the visibility of features in their apps.
-
-<!-- It helps them release faster and safer as well as pull features back in the event of something breaking -->
-
-## TODO: add fade in logo animation of companies
-
-```ts {1|2|3|4}
-Airbnb 
-Netflix
-Facebook
-Google
-
-```
-
-<!-- Now that we've gone over the basics of what a feature flag is and who uses it, why would you want to use a feature flag in your app -->
 
 ---
 layout: center
