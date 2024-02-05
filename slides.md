@@ -313,27 +313,61 @@ layout: center
 
 # How to implement feature flags
 
-## This would not be very interesting without... renderers! {v-click}
+## Now we have our feature flags, how do we use them?
+
 
 ---
 layout: quote
 ---
 
 
-# What's a Renderer?
+# Let's create a hook 
 
-> A renderer keeps an external _output_ in sync with a reactive value.
+```typescript 
+// src/useFeatureFlag.ts
+
+const AllowedFeatureFlags = ['new-feature', 'another-feature'] as const;
+
+type AllowedFeatureFlag = typeof AllowedFeatureFlags[number];
+
+const useFeatureFlag = (name: AllowedFeatureFlag): boolean => {
+  const cookie = parseCookie('new-feature');
+  
+  const flag = featureFlags.find((flag) => flag.name === name);
+  return flag.enabled || cookie.value === 'my-secret-value';
+};
+ 
+
+```
+
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 0.8rem;
+    --slidev-code-line-height: calc(0.8rem * 1.5);
+  }
+</style>
+<!-- we use a cookie parsing library to check for the existense of a cookie to override the feature. We then use our hook with the name of the feature we're looking for and are then providing a boolean value to the override dependening on whether we have an override cookie present or not -->
+
 
 ---
 layout: center
 ---
 
-# Responsibilities
+# All together now
 
-1. Subscribe to a reactive value
-2. Schedule an update to the output
-3. If appropriate, coordinate updates for efficiency
+```typescript 
+ const MyComponent = () => {
+  const newFeature = useFeatureFlag('new-feature');
+  return newFeature ? <NewFeature /> : <OldFeature />;
+ }
 
+```
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 0.8rem;
+    --slidev-code-line-height: calc(0.8rem * 1.5);
+  }
+</style>
 ---
 
 # The Debug Renderer
