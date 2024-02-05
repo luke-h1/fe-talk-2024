@@ -43,11 +43,22 @@ You can turn them on or off, and you can even dim them to control the percentage
 ---
 ---
 
+## Examples
+
+### todo - add some gifs of feature flags in the wild 
+
+---
+---
+
+
+
 # You're in good company
 
 Many companies use feature flags to control the visibility of features in their apps.
 
 <!-- It helps them release faster and safer as well as pull features back in the event of something breaking -->
+
+## TODO: add fade in logo animation of companies
 
 ```ts {1|2|3|4}
 Airbnb 
@@ -68,6 +79,8 @@ layout: center
 ## Why use feature flags in your app?
 
 ---
+
+## TODO: need to add some examples / make different slides for each point
 
 <!-- now we know about the basic concepts of a feature flag, why would we want to use this? -->
 
@@ -112,7 +125,7 @@ better QA and testing by being able to test features in production via an overri
 ---
 layout: center
 ---
-## Hook based feature flag
+## Implementing feature flags with hooks
 
 ```typescript{2|4|5|8}
 const myComponent = () => {
@@ -131,7 +144,7 @@ const myComponent = () => {
 layout: center
 ---
 
-# Ok, now what?
+# How to implement feature flags
 
 ## This would not be very interesting without... renderers! {v-click}
 
