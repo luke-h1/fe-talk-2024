@@ -4,7 +4,7 @@ fonts:
   sans: Comfortaa
 highlighter: shiki
 class: text-center
-lineNumbers: false
+lineNumbers: true
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -14,7 +14,7 @@ drawings:
   persist: false
 transition: slide-left
 css: unocss
-title: Feature Flags
+title: Feature Flags (FE Sheffield May)
 ---
 
 # Feature Flags
@@ -22,45 +22,105 @@ title: Feature Flags
 ## Light switches for your apps
 
 ---
+layout: two-cols
+
+---
+
+<div class="mt-8">
+  <h1 class="!c-white !text-5xl !pt-8">
+    Luke Howsam
+  </h1>
+
+  <div class="c-gray-400 mt-8">
+    <p>
+    Software Developer at Sky Betting & Gaming.
+    </p>
+    <p>
+    Typescript, DevOps, anything frontend 😉
+    </p>
+  </div>
+
+  <div class="flex gap-4 items-center mt-12 text-sm">
+    <ph-github-logo class="c-gray-500" />
+    <a href="https://github.com/luke-h1">luke-h1</a>
+  </div>
+  <div class="flex gap-4 items-center mt-4 text-sm">
+    <ph-globe class="c-gray-500" />
+    <a href="https:/lhowsam.com">lhowsam.com</a>
+  </div>
+  <div class="flex gap-4 items-center mt-4 text-sm">
+    <ph-linkedin-logo class="c-gray-500" />
+    <a href="https://www.linkedin.com/in/lukehowsam/">lukehowsam</a>
+  </div>
+</div>
+
+::right::
+<img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
+
+
+<!-- at the moment I work for sky bet
+been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that. and today we're going to be talking about feature flags and why you might want to use them -->
+
+---
+
 
 ## What are feature flags?
 
 
-
 You can think of feature flags like light switches
-
-<!-- Put simply, feature flags are a way to control the visibility of features in your app. You can think of them like light switches for your app. 
-
-You can turn them on or off, and you can even dim them to control the percentage of users who see the feature. -->
-
-<!-- they allow you to progamatically turn features on and off -->
 
 <img src="/homer-light-switch.gif" class="m-2" />
 
 
-<!-- gif -->
+<!-- 
+Put simply, feature flags are a way to control the visibility of features in your app. You can think of them like light switches for your app
+they allow you to progamatically turn parts of your application on and off.
 
+You can turn them on or off, and you can even dim them to control the percentage of users who see the feature. Now that we know what a feature flag is, who uses them?
+-->
 
 ---
+clicks: 4
+layout: fact
 ---
 
-# You're in good company
+## Who uses them?
 
-Many companies use feature flags to control the visibility of features in their apps.
 
 <!-- It helps them release faster and safer as well as pull features back in the event of something breaking -->
 
-## TODO: add fade in logo animation of companies
 
-```ts {1|2|3|4}
-Airbnb 
-Netflix
-Facebook
-Google
+<div class="flex items-center gap-8">
+<div v-click="1">
+<img src="/airbnb.png" class="m-1 w-20" />
+</div>
 
-```
+<div v-click="2">
+<img src="/netflix.svg" class="m-1 w-20" />
+</div>
 
-<!-- Now that we've gone over the basics of what a feature flag is and who uses it, why would you want to use a feature flag in your app -->
+<div v-click="3">
+<img src="/gh.png" class="m-1 w-20" />
+</div>
+
+<div v-click="4">
+<img src='/google.png' class="m-1 w-20" />
+</div>
+</div>
+
+
+<!-- Feature flags are very prevelant in the industry. They help minimize risk quite a lot especially when your working on a big application. Just to name a few Airbnb, GitHub, Netflix use them for various reasons -->
+
+
+---
+--- 
+## Benefits
+
+<img src="/fargo.gif" class="m-2 w-80" />
+
+
+<!-- You might be thinking this is great and everything but what's in it for me and my projects? So I've popped together a few examples on what you can use feature flags for -->
+
 
 
 ---
@@ -68,7 +128,7 @@ layout: comparison
 clicks: 2
 ---
 
-## Examples
+## Benefits
 
 
 A/B Testing
@@ -85,14 +145,16 @@ A/B Testing
 <img src="/red-button-feature.png" class="m-1" />
 </div>
 
+
+
+<!-- Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. You can combine this with staggered rollouts where you release to small subsets of users -->
+
 --- 
 layout: comparison
 clicks: 2
 ---
 
-## Examples
-
-<!-- maybe your app is undergoing maintenance and you don't want to show users broken functionsality, banner your site with a feature flag  -->
+## Benefits
 
 Error Banners
 
@@ -109,19 +171,16 @@ Error Banners
 <img src="/error-site.png" class="m-1" />
 </div>
 
+<!-- maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, banner your site with a feature flag would be a great option for that -->
 
 ---
 layout: comparison
 clicks: 2
 ---
 
-## Examples
+## Benefits
 
-Release only to internal teams via overrides
-
-<!-- maybe your features are ready but you want to release to production without releasing to everyone. You can use overrides to release to internal teams only -->
-
-<!-- a lot of feature flag providers will allow you to override the value of a feature flag so it can be tested internally -->
+Staff / internal releases
 
 ::a::
 
@@ -144,52 +203,10 @@ window.cookie = 'new-button-feature=true'
 
 </div>
 
----
----
 
-## Examples
+<!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow your QA engineers, stakeholders view the work in production without potentially releasing something broken to your users. -->
 
-Quickly roll back a feature in production
-
-<!--  Disable your changes in seconds without having to roll back or forward fix a deployment, which could take 10 - 15 minutes -->
-
-<img src="/roll-back.gif" class="m-2" />
-
----
-layout: center
----
-
-# Benefits
-
-## Why use feature flags in your app?
-
----
-
-## TODO: need to add some examples / make different slides for each point
-
-<!-- now we know about the basic concepts of a feature flag, why would we want to use this? -->
-
-1. Safeguard releases
-
-<!-- safeguard releases by being able to quickly roll back a feature if it causes errors -->
-
-2. Staff shipping - release to internal only members
-<!-- 
-better QA and testing by being able to test features in production via an override such as a query parameter or cookie
- -->
-
-3. Able to quickly react to issues in production 
-<!-- 
-  Disable your changes in seconds without having to roll back or forward fix a deployment, which could take 10 - 15 minutes
- -->
-
-4. Allows you to release your code little and often 
-
-<!-- 
-  Commonly we work on big features and release them all at once. This can be cumbersome as we need to line up backend features with frontend features. With feature flags we can release our code little and often and not have to worry about the frontend and backend being in sync. If the backend isn't quite ready, we can release the frontend code and turn the feature on when the backend is ready
- -->
-
----
+--- 
 ---
 
 # The anatomy of a feature flag
@@ -207,21 +224,86 @@ better QA and testing by being able to test features in production via an overri
 
 ```
 
+
 ---
 layout: center
 ---
-## Implementing feature flags with hooks
 
-```typescript{2|4|5|8}
-const myComponent = () => {
-  const { enabled, overrides } = useFeatureFlag('new-feature');
+# How to implement feature flags
 
-  if (enabled || overrides.cookie === 'new-feature=true') {
-    return <NewFeature />
-  }
 
-  return <OldFeature />
-}
+<div v-click>
+<img src="/yipee.gif" class="m-2 w-150" /> 
+</div>
+---
+clicks: 2
+layout: comparison
+---
+## Implementation
+
+There's many ways to implement a feature flag. We're going to be looking at two ways
+
+::a:: 
+<div v-click="1">
+
+> Using a central file in your codebase to store your feature flags
+
+<br />
+<br />
+
+
+```typescript
+// src/feature-flags.ts
+
+const featureFlags = {
+  newFeature: true,
+  anotherFeature: false,
+};
+export default featureFlags;
+```
+</div>
+
+
+::b::
+
+<div v-click="2">
+
+> Using a third party service such as LaunchDarkly or your own feature flag API
+
+<br />
+
+```typescript
+// src/feature-flags.ts
+
+const MyComp = () => {
+  const newFeat = fetchFromApi('new-feature');
+  return newFeat ? <NewFeat /> : <OldFeat />;
+};
+```
+</div>
+
+
+<!-- If after this talk you're wondering which one to use, I'd suggest asking yourself this question:
+Do I need to be able to change the feature flag without a code change? If the answer is yes, then you should use a third party service. If the answer is no, then you can use a central file in your codebase to store your feature flags. For simplicity we're going to be using a file based feature flag -->
+
+---
+layout: full
+---
+## Let's implement a feature flag
+
+```typescript
+// src/feature-flags.ts
+
+export const featureFlags: FeatureFlag[] = [
+  {
+    name: 'new-feature',
+    description: 'A new feature',
+    enabled: true,
+    overrides: {
+      cookie: 'override',
+    },
+  },
+];
 
 ```
 
