@@ -37,7 +37,55 @@ You can turn them on or off, and you can even dim them to control the percentage
 
 <img src="/homer-light-switch.gif" class="m-2" />
 
+
 <!-- gif -->
+
+
+---
+layout: comparison
+clicks: 2
+---
+
+## Examples
+
+
+A/B Testing
+
+::a::
+
+<div v-click="1">
+<img src="/black-button-feature.png" class="m-1" />
+</div>
+
+::b::
+
+<div v-click="2">
+<img src="/red-button-feature.png" class="m-1" />
+</div>
+
+--- 
+layout: comparison
+clicks: 2
+---
+
+## Examples
+
+<!-- maybe your app is undergoing maintenance and you don't want to show users broken functionsality, banner your site with a feature flag  -->
+
+Error Banners
+
+::a::
+
+<div v-click="1">
+
+<img src="/normal-site.png" class="m-1" />
+</div>
+
+::b::
+
+<div v-click="2">
+<img src="/error-site.png" class="m-1" />
+</div>
 
 
 ---
@@ -45,12 +93,31 @@ You can turn them on or off, and you can even dim them to control the percentage
 
 ## Examples
 
-### todo - add some gifs of feature flags in the wild 
+Release only to internal teams via overrides
+
+<!-- maybe your features are ready but you want to release to production without releasing to everyone. You can use overrides to release to internal teams only -->
+
+<!-- a lot of feature flag providers will allow you to override the value of a feature flag so it can be tested internally -->
+
+```typescript 
+
+window.cookie = 'new-button-feature=true'
+
+```
 
 ---
 ---
 
+## Examples
 
+Quickly roll back a feature in production
+
+<!--  Disable your changes in seconds without having to roll back or forward fix a deployment, which could take 10 - 15 minutes -->
+
+<img src="/roll-back.gif" class="m-2" />
+
+---
+---
 
 # You're in good company
 
