@@ -19,7 +19,7 @@ title: Feature Flags (FE Sheffield May)
 
 # Feature Flags
 
-## Light switches for your apps
+## A safer way of releasing software
 
 ---
 layout: two-cols
@@ -59,35 +59,62 @@ layout: two-cols
 
 
 <!-- at the moment I work for sky bet
-been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that. and today we're going to be talking about feature flags and why you might want to use them -->
+been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that. Today we're going to be talking about feature flags and why you might want to use them -->
+---
+layout: comparison
+clicks: 6
+---
+## Software delivery
+
+
+<div v-click="1">
+<p>Feature / need</p> 
+</div>
+
+<div v-click="2">
+<p>refine + estimate</p>
+</div>
+
+<div v-click="3">
+<p>development happens</p>
+</div>
+
+ 
+<div v-click="4">
+<p>testing</p>
+</div>
+
+
+<div v-click="5">
+<p>release</p>
+</div>
+
+
+<div v-click="6">
+<p class='text-red'>What happens when something goes wrong at one of these stages?</p>
+</div>
+
+
+<!-- Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature you deployed to production blows everything up and causes a horrible experience for your users. Well this is where feature flags can help you out and take a lot of stress out of everyone's day -->
 
 ---
 
+## What are feature flags and A/B testing?
 
-## What are feature flags?
-
-
-You can think of feature flags like light switches
+You can think of feature flags like light switches.
 
 <img src="/homer-light-switch.gif" class="m-2" />
 
 
-<!-- 
-Put simply, feature flags are a way to control the visibility of features in your app. You can think of them like light switches for your app
-they allow you to progamatically turn parts of your application on and off.
-
-You can turn them on or off, and you can even dim them to control the percentage of users who see the feature. Now that we know what a feature flag is, who uses them?
+<!-- feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. A/B testing allows you to release in small increments. you don't want to release a feature to 100% of your users, you want to slowly release. Now that we know what a feature flag is, who uses them?
 -->
 
 ---
-clicks: 4
-layout: fact
+clicks: 8
+layout: comparison
 ---
 
 ## Who uses them?
-
-
-<!-- It helps them release faster and safer as well as pull features back in the event of something breaking -->
 
 
 <div class="flex items-center gap-8">
@@ -106,11 +133,25 @@ layout: fact
 <div v-click="4">
 <img src='/google.png' class="m-1 w-20" />
 </div>
+
+<div v-click="5">
+<img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
+</div>
 </div>
 
+<div class='mt-5'>
 
-<!-- Feature flags are very prevelant in the industry. They help minimize risk quite a lot especially when your working on a big application. Just to name a few Airbnb, GitHub, Netflix use them for various reasons -->
-
+<div v-click="6">
+ <Star /> Risk mitigation 💰
+</div>
+<div v-click="7">
+ <Star /> Roll out big features incrementally 🚀
+</div>
+<div v-click="8">
+ <Star /> Performance 🚦
+</div>
+</div>
+<!-- Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk. For a lot of these companies 10 - 15 minutes of service disruption means lots of dollars lost. A/B testing: feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature -->
 
 ---
 --- 
@@ -120,8 +161,6 @@ layout: fact
 
 
 <!-- You might be thinking this is great and everything but what's in it for me and my projects? So I've popped together a few examples on what you can use feature flags for -->
-
-
 
 ---
 layout: comparison
@@ -161,7 +200,6 @@ Error Banners
 ::a::
 
 <div v-click="1">
-
 <img src="/normal-site.png" class="m-1" />
 </div>
 
@@ -200,18 +238,17 @@ window.cookie = 'new-button-feature=true'
 ```typescript 
  https://my-awesome-site.com?new-button-feature=true
 ```
-
 </div>
 
 
-<!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow your QA engineers, stakeholders view the work in production without potentially releasing something broken to your users. -->
+<!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow your QA engineers, stakeholders view the work in production without potentially releasing something broken to your users -->
 
 --- 
 ---
 
 # The anatomy of a feature flag
 
-```ts{2|3|4|5|6|7}
+```ts{2|3|4|5|6|7|8}
 
 {
   "name": "new-feature",
@@ -219,7 +256,8 @@ window.cookie = 'new-button-feature=true'
   "enabled": true,
    "overides": {
     "cookie": "new-feature=true",
-   }
+   },
+   "percentage": 10
 }
 
 ```
@@ -241,7 +279,8 @@ layout: comparison
 ---
 ## Implementation
 
-There's many ways to implement a feature flag. We're going to be looking at two ways
+TODO luke - review this section
+There's many ways to implement a feature flag. We're mainly going
 
 ::a:: 
 <div v-click="1">
@@ -256,7 +295,10 @@ There's many ways to implement a feature flag. We're going to be looking at two 
 // src/feature-flags.ts
 
 const featureFlags = {
-  newFeature: true,
+  newFeature: {
+    enabled: true,
+    weight: 10,
+  }
   anotherFeature: false,
 };
 export default featureFlags;
@@ -276,7 +318,7 @@ export default featureFlags;
 // src/feature-flags.ts
 
 const MyComp = () => {
-  const newFeat = fetchFromApi('new-feature');
+  const newFeat = fetchFromService('new-feature');
   return newFeat ? <NewFeat /> : <OldFeat />;
 };
 ```
