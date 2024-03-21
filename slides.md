@@ -243,8 +243,41 @@ window.cookie = 'new-button-feature=true'
 
 <!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow your QA engineers, stakeholders view the work in production without potentially releasing something broken to your users -->
 
---- 
---- 
+
+---
+layout: comparison
+---
+
+## Benefits
+
+Percentage rollouts
+
+<img src="/perc.png" class="m-1" />
+
+You can release your feature to a percentage of your users instead of everyone all at once
+
+
+<!-- Instead of activating a feature for all users at once, we can activate in in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. We split the user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on services such as LaunchDarkly, aws cloudwatch evidently etc. -->
+
+
+---
+layout: comparison
+---
+
+## Benefits
+
+Rollouts based on user attributes
+
+<img src="/perc.png" class="m-1" />
+
+Admins, Moderators, certain teams etc.
+
+
+<!-- Perhaps you want to release to certain groups only, and see if your feature has a positive impact -->
+
+
+---
+---
 
 # Talk is cheap, show me the code!!!
 
