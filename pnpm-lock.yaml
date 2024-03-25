@@ -798,7 +798,7 @@ packages:
       is-installed-globally: 0.4.0
       jiti: 1.21.0
       js-base64: 3.7.6
-      katex: 0.16.9
+      katex: 0.16.10
       kolorist: 1.8.0
       localtunnel: 2.0.2
       markdown-it: 13.0.2
@@ -872,7 +872,7 @@ packages:
       fuse.js: 6.6.2
       js-base64: 3.7.6
       js-yaml: 4.1.0
-      katex: 0.16.9
+      katex: 0.16.10
       mermaid: 10.8.0
       monaco-editor: 0.37.1
       nanoid: 4.0.2
@@ -2862,8 +2862,8 @@ packages:
       graceful-fs: 4.2.11
     dev: false
 
-  /katex@0.16.9:
-    resolution: {integrity: sha512-fsSYjWS0EEOwvy81j3vRA8TEAhQhKiqO+FQaKWp0m39qwOzHVBgAUBIXWj1pB+O2W3fIpNa6Y9KSKCVbfPhyAQ==}
+  /katex@0.16.10:
+    resolution: {integrity: sha512-ZiqaC04tp2O5utMsl2TEZTXxa6WSC4yo0fv5ML++D3QZv/vx2Mct0mTlRx3O+uUkjfuAgOkzsCmq5MiUEsDDdA==}
     hasBin: true
     dependencies:
       commander: 8.3.0
