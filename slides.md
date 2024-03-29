@@ -109,49 +109,12 @@ You can think of feature flags like light switches.
 <!-- feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. They're usually paired with weighting algorithms allows you to release in small increments. you don't want to release a feature to 100% of your users, you want to slowly release. Now that we know what a feature flag is, who uses them?
 -->
 
----
-clicks: 8
-layout: comparison
+--- 
 ---
 
-## Who uses them?
+## Example
 
-
-<div class="flex items-center gap-8">
-<div v-click="1">
-<img src="/airbnb.png" class="m-1 w-20" />
-</div>
-
-<div v-click="2">
-<img src="/netflix.svg" class="m-1 w-20" />
-</div>
-
-<div v-click="3">
-<img src="/gh.png" class="m-1 w-20" />
-</div>
-
-<div v-click="4">
-<img src='/google.png' class="m-1 w-20" />
-</div>
-
-<div v-click="5">
-<img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
-</div>
-</div>
-
-<div class='mt-5'>
-
-<div v-click="6">
- <Star /> Risk mitigation 💰
-</div>
-<div v-click="7">
- <Star /> Roll out big features incrementally 🚀
-</div>
-<div v-click="8">
- <Star /> Performance 🚦
-</div>
-</div>
-<!-- Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of dollars lost. Feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature -->
+add an example of turning a feature flag on and off here - via a gif perhaps. rework the section here to transition into benefits and then who uses them
 
 ---
 --- 
@@ -266,7 +229,7 @@ layout: comparison
 
 ## Benefits
 
-Rollouts based on user attributes
+Segmented rollouts
 
 <img src="/perc.png" class="m-1" />
 
@@ -277,15 +240,63 @@ Admins, Moderators, certain teams etc.
 
 
 ---
+clicks: 8
+layout: comparison
 ---
 
-# Talk is cheap, show me the code!!!
+## Who uses them?
+
+
+<div class="flex items-center gap-8">
+<div v-click="1">
+<img src="/airbnb.png" class="m-1 w-20" />
+</div>
+
+<div v-click="2">
+<img src="/netflix.svg" class="m-1 w-20" />
+</div>
+
+<div v-click="3">
+<img src="/gh.png" class="m-1 w-20" />
+</div>
+
+<div v-click="4">
+<img src='/google.png' class="m-1 w-20" />
+</div>
+
+<div v-click="5">
+<img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
+</div>
+</div>
+
+<div class='mt-5'>
+
+<div v-click="6">
+ <Star /> Risk mitigation 💰
+</div>
+<div v-click="7">
+ <Star /> Roll out big features incrementally 🚀
+</div>
+<div v-click="8">
+ <Star /> Performance 🚦
+</div>
+</div>
+<!-- Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of dollars lost. Feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature -->
+
+
+---
+---
+
+# Feature flag code patterns
+
+<!-- we're going to go over the two primary patterns for creating feature flags and then we're going to wrap up with a quick demo on how it would be used in the real world -->
 
 <img src="/giphy.gif" class="w-78" />
 
-
 --- 
 ---
+
+## General structure of a feature flag
 
 ```ts{2|3|4|5|6|7|9}
 
@@ -344,7 +355,7 @@ export default featureFlags;
 
 <div v-click="2">
 
-> Using a third party service such as LaunchDarkly or your own feature flag API
+> Using a third party service such as config cat or your own feature flag API
 
 <br />
 
@@ -352,7 +363,7 @@ export default featureFlags;
 // src/feature-flags.ts
 
 const MyComp = () => {
-  const newFeat = fetchFromService('new-feature');
+  const newFeat = fetchFromService('new-feature', false);
   return newFeat ? <NewFeat /> : <OldFeat />;
 };
 ```
@@ -366,6 +377,9 @@ Do I need to be able to change the feature flag without a code change? If the an
 --- 
 layout: comparison
 ---
+
+
+Central file based feature flag
 
 
 ```typescript
@@ -430,4 +444,189 @@ layout: center
   }
 </style>
 ---
+---
+
+---
+layout: center
+--- 
+
+# Real world example
+
+<img src="/cat-laptop.gif" class="w-78"  />
+
+<!-- Now that we know a bit what a typical feature flag looks like, let's look at a real world demo with config cat-->
+
+
+
+--- 
+layout: center
+--- 
+
+## Our awesome blog site is going live 🥳🎉
+
+<img src="/blog-page.png" class="w-78"  />
+
+<!-- our goal with this exercise is to control this blog site with a feature flag. Perhaps we have a grand opening of our website and we want to do a big reveal at lunch time -->
+
+
+--- 
+layout: center
+--- 
+## Config cat
+
+<img src="/config-cat.png" class="w-78"  />
+
+
+<!-- To achieve this, we'll be using config cat. config cat is a really good feature flagging service. It also a generous free tier and other goodies that we're going to take a quick look at -->
+
+
+--- 
+--- 
+
+## Creating a feature flag
+
+
+<!-- so to create a feature flag in config cat, it's really simple. We just need to give it a descriptive name, a key (this is what will be used in our frontend code) and a bit of metadata -->
+
+<img src="/create-ff-2.png" class="w-350"  />
+
+TODO: make a gif of this perhaps / more interactive
+
+---
+--- 
+
+## Add any percentages or segmentation you want to use
+
+<img src="/percentage.png" class="w-350"  />
+
+
+<!-- if you only want to expose it to certain amount of users, you can control the percentages as well as create user segments -->
+
+--- 
+clicks: 4
+--- 
+
+## Add the SDK to your project  
+
+<!-- this is probably the simplest part I'd argue, it's super easy to get started. All we do is install the dependency, import it, and then move on to data fetching. We get the feature flag we want by calling `getValueAsync`, with a default value of false if the API call to config cat fails for any reason and then return the flag along with the posts -->
+
+<div v-click="1">
+
+```typescript
+pnpm i configcat-js-ssr
+```
+
+</div>
+
+
+<div v-click="2">
+
+```typescript
+import * as configcat from "configcat-js-ssr";
+```
+</div>
+
+<div v-click="3">
+
+```typescript 
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const client = configcat.getClient(process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY);
+
+  // default value of false if the API call fails
+  const enableBlogFeature = await client.getValueAsync("blogFeature", false);
+  const posts = getSortedPosts();
+
+  return {
+    props: {
+      enableBlogFeature,
+      posts,
+    },
+  };
+};
+```
+</div>
+
+
+--- 
+--- 
+
+## Using the feature flag to determine what to show
+
+```typescript 
+export default function Home({ posts, enableBlogFeature }: Props) {
+  return (
+    <>
+      {enableBlogFeature ? (
+        <section className={clsx(utilStyles.headingMd, utilStyles.padding1px)}>
+          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <ul className={utilStyles.list}>
+            {posts &&
+              posts.map((post) => (
+                <li className={utilStyles.listItem} key={post.id}>
+                  <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                    <Date dateString={post.date as unknown as string} />
+                  </small>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ) : (
+        <div className="card">
+          <h2>Feature is off</h2>
+        </div>
+      )}
+    </>
+  );
+}
+```
+
+<!-- Now we pass posts and enableBlogFeature feature flag down to our page. If the feature flag is enabled we show the blog posts if not we just let the user know that the feature is disabled -->
+
+
+--- 
+layout: comparison
+clicks: 2
+--- 
+
+## Result 
+
+
+::a:: 
+
+<div v-click="1">
+<img src="/blog-page.png" class="w-78"  />
+</div>
+
+::b::
+<div v-click="2">
+<img src="/feature-off.png" class="w-78"  />
+</div>
+
+
+--- 
+--- 
+
+# Finito / Question time
+
+
+
+### Resources:
+
+
+Slides 
+- https://fe-talk-2024.vercel.app/ + https://github.com/luke-h1/fe-talk-2024
+
+
+Feature flagging services 
+- self hosted feature flagging service - https://unleash.github.io/
+- Config cat - https://configcat.com/
+- Launch Darkly - https://launchdarkly.com/
+
+
+Repositories
+- Slides - TODO
+- Redis self-hosted feature flag service - https://github.com/luke-h1/feature-flag-next
+- Config cat example - https://github.com/luke-h1/config-cat-next
 
