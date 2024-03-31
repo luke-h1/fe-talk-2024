@@ -220,7 +220,7 @@ Percentage rollouts
 You can release your feature to a percentage of your users instead of everyone all at once
 
 
-<!-- Instead of activating a feature for all users at once, we can activate in in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. We split the user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on services such as LaunchDarkly, aws cloudwatch evidently etc. -->
+<!-- Instead of activating a feature for all users at once, we can activate in in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. We split the user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on services such as LaunchDarkly, aws cloudwatch evidently etc. The crux of the problem is that you need some way of identifying a user. Not so hard if you've got user authentication as you can just determine the total users of your service and then do some maths to get 10%. But if you're just running a public website, it's harder to determine what buckets to put a user in -->
 
 
 ---
