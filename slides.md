@@ -110,12 +110,22 @@ You can think of feature flags like light switches.
 -->
 
 --- 
+clicks: 2
 ---
 
 ## Example
 
-add an example of turning a feature flag on and off here - via a gif perhaps. rework the section here to transition into benefits and then who uses them
+<div v-click="1">
+<img src='/amazon-recs.png' class='w-150' />
+</div>
 
+
+<div v-click="2">
+<img src='/amazon-on.png' class='w-150' />
+</div>
+
+
+<!-- here are my amazon recommendations. You can see I'm getting the mr and mrs smith recommendended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. mr and mrs smith might be a brand new show, and amazon wants people to see this on their homepage. It could even be only exposed to certain groups of users. Maybe they only show mr and mrs smith to 50% users under a feature flag. Regardless, once it's been out for two weeks, they turn the feature flag off and revert back to showing me my recommened show. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it (such as if the displaying it to users on the homepage drove more people to watch it)-->
 ---
 --- 
 ## Benefits
@@ -123,7 +133,7 @@ add an example of turning a feature flag on and off here - via a gif perhaps. re
 <img src="/fargo.gif" class="m-2 w-80" />
 
 
-<!-- You might be thinking this is great and everything but what's in it for me and my projects? So I've popped together a few examples on what you can use feature flags for -->
+<!-- So now we know roughly what a feature flag is and how it might be used, you might be thinking  what's in it for me and my projects? So I've popped together a few examples on what you can use feature flags for -->
 
 ---
 layout: comparison
@@ -149,7 +159,7 @@ A/B Testing / variant testing
 
 
 
-<!-- Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. You can combine this with staggered rollouts where you release to small subsets of users -->
+<!-- Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where you release to small subsets of users to test whether user's like the first design or the last design -->
 
 --- 
 layout: comparison
@@ -172,7 +182,7 @@ Error Banners
 <img src="/error-site.png" class="m-1" />
 </div>
 
-<!-- maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, banner your site with a feature flag would be a great option for that -->
+<!-- maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, bannering your site with a feature flag while you're fixing things would be a great option for that -->
 
 ---
 layout: comparison
@@ -204,7 +214,7 @@ window.cookie = 'new-button-feature=true'
 </div>
 
 
-<!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow your QA engineers, stakeholders view the work in production without potentially releasing something broken to your users -->
+<!-- This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders view the work in production without potentially releasing something broken to your users -->
 
 
 ---
@@ -220,7 +230,7 @@ Percentage rollouts
 You can release your feature to a percentage of your users instead of everyone all at once
 
 
-<!-- Instead of activating a feature for all users at once, we can activate in in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. We split the user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on services such as LaunchDarkly, aws cloudwatch evidently etc. The crux of the problem is that you need some way of identifying a user. Not so hard if you've got user authentication as you can just determine the total users of your service and then do some maths to get 10%. But if you're just running a public website, it's harder to determine what buckets to put a user in -->
+<!-- Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws cloudwatch evidently etc. The crux of the problem is that you need some way of identifying a user in order to determine what cohort to put them in. Not so hard if you've got user authentication as you can just determine the total users of your service and then do some maths to get 10%. But if you're just running a public website, it's harder to determine what buckets to put a user in and it needs a bit of thought on how you want to proceed with that. -->
 
 
 ---
@@ -236,7 +246,7 @@ Segmented rollouts
 Admins, Moderators, certain teams etc.
 
 
-<!-- Perhaps you want to release to certain groups only, and see if your feature has a positive impact -->
+<!-- Perhaps you want to release to certain groups only, and see if your feature has a positive impact. Similar to percentage based rollouts but we are exposing feature to users with specific attributes. Such as only paid users, admins, etc. -->
 
 
 ---
@@ -281,7 +291,7 @@ layout: comparison
  <Star /> Performance 🚦
 </div>
 </div>
-<!-- Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of dollars lost. Feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature -->
+<!-- Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of cash gets burned. Feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature -->
 
 
 ---
@@ -289,7 +299,7 @@ layout: comparison
 
 # Feature flag code patterns
 
-<!-- we're going to go over the two primary patterns for creating feature flags and then we're going to wrap up with a quick demo on how it would be used in the real world -->
+<!-- we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how it would be used in the real world -->
 
 <img src="/giphy.gif" class="w-78" />
 
@@ -298,7 +308,7 @@ layout: comparison
 
 ## General structure of a feature flag
 
-```ts{2|3|4|5|6|7|9}
+```ts{2|3|4|5|6,7,8|9}
 
 {
   "name": "new-feature",
@@ -332,20 +342,18 @@ layout: comparison
 ```typescript
 // src/feature-flags.ts
 
-const featureFlags = {
-  newFeature: {
-    enabled: true,
+const featureFlags: FeatureFlag[] = [
+  {
+    name: 'talks',
+    description: 'Whether to show the talks page',
+    enabled: false,
+    overrides: {
+    name: 'show-talks',
+    value: true,    
+  },
     percentage: 10,
   },
-   useNewApi: {
-    enabled: true,
-    percentage: 100,
-    description: "Whether to use the new API. Setting to false will use the old API in case of issues.",
-    overides: {
-      cookie: "new-api=true",
-    }
-  },
-};
+];
 export default featureFlags;
 ```
 </div>
@@ -353,7 +361,7 @@ export default featureFlags;
 
 ::b::
 
-<div v-click="2">
+<div v-click="2" class="mt-6">
 
 > Using a third party service such as posthog or your own feature flag API
 
@@ -363,23 +371,23 @@ export default featureFlags;
 // src/feature-flags.ts
 
 const MyComp = () => {
-  const newFeat = fetchFromService('new-feature', false);
+  const newFeat = fetchFromService('new-feature');
   return newFeat ? <NewFeat /> : <OldFeat />;
 };
 ```
 </div>
 
 
-<!-- If after this talk you're wondering which one to use, I'd suggest asking yourself this question:
-Do I need to be able to change the feature flag without a code change? If the answer is yes, then you should use a third party service. If the answer is no, then you can use a central file in your codebase to store your feature flags. For simplicity we're going to be using a file based feature flag -->
+<!-- Using a central file in your codebase. Simple way of getting started with feature flags.We've got somesimple fields here, the feature name, a description, whether it's enabled,some way of overriding the feature flag (in this case we're using a cookie) and finally a percentage (bear in mind this will only work if you have some way of doing maths and figuring out how to identify a user) 
+. If after this talk you're wondering which one to use, ask yourself this question:
+Do I need to be able to change the feature flag without a code change? If the answer is yes, then you should use a third party service. If the answer is no, then you can use a central file in your codebase to store your feature flags. -->
 
 
 ---
 layout: comparison
 ---
 
-
-Central file based feature flag
+Central file based feature flag implementation
 
 
 ```typescript
@@ -387,41 +395,57 @@ Central file based feature flag
 
 export const featureFlags: FeatureFlag[] = [
   {
-    name: 'new-feature',
-    description: 'A new feature',
-    enabled: true,
+    name: 'talks',
+    description: 'Whether to show the talks page and navigation item',
+    enabled: false,
     overrides: {
-      cookie: 'override',
+      name: 'show-talks',
+      value: true,
     },
+    percentage: 10,
   },
 ];
-
 ```
 
-```typescript 
+--- 
+--- 
+Central file based feature flag implementation
+
+
+```typescript{2|4|6|7|9|11,12,13|15|17,18|20}
 // src/useFeatureFlag.ts
+import featureFlags from '@frontend/utils/featureFlags';
 
 const AllowedFeatureFlags = ['new-feature', 'another-feature'] as const;
 
 type AllowedFeatureFlag = typeof AllowedFeatureFlags[number];
 
 const useFeatureFlag = (name: AllowedFeatureFlag): boolean => {
-  const cookie = parseCookie('new-feature');
-  
-  const flag = featureFlags.find((flag) => flag.name === name);
-  return flag.enabled || cookie.value === 'my-secret-value';
+  const featureFlag = featureFlags.find(flag => flag.name === name);
+
+  if (!featureFlag) {
+    return false;
+  }
+
+  const cookie = parseCookie(featureFlag?.overrides.name);
+
+  const isCookieOverrideSet =
+    cookie?.name === featureFlag?.overrides.name && cookie?.value === 'true';
+
+  return featureFlag.enabled || isCookieOverrideSet;
 };
- 
+
 
 ```
 
 <style>
   .slidev-layout {
-    --slidev-code-font-size: 0.8rem;
-    --slidev-code-line-height: calc(0.8rem * 1.5);
+    --slidev-code-font-size: 0.6rem;
+    --slidev-code-line-height: calc(0.6rem * 1.5);
   }
 </style>
-<!-- we use a cookie parsing library to check for the existense of a cookie to override the feature. We then use our hook with the name of the feature we're looking for and are then providing a boolean value to the override dependening on whether we have an override cookie present or not -->
+
+<!-- We import our array of feature flags. Firstly we've got some typescript definitions here that just restrict what we're allowed to pass to the useFeatureFlag hook., and then try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. If we have found a flag, we try to look for a cookie based on the override object that we set on the feature flag to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value matches what we set in the feature flag array earlier, we return true. Otherwise we return whatever the enable value of the feature flag is. -->
 
 
 ---
@@ -437,12 +461,6 @@ layout: center
  }
 
 ```
-<style>
-  .slidev-layout {
-    --slidev-code-font-size: 0.8rem;
-    --slidev-code-line-height: calc(0.8rem * 1.5);
-  }
-</style>
 ---
 ---
 
@@ -636,12 +654,12 @@ clicks: 2
 ::a:: 
 
 <div v-click="1">
-<img src="/blog-page.png" class="w-78"  />
+<img src="/blog-page.png" class="w-158"  />
 </div>
 
 ::b::
 <div v-click="2">
-<img src="/grand-opening.gif" class="w-78"  />
+<img src="/grand-opening.gif" class="w-158"  />
 </div>
 
 
@@ -682,7 +700,7 @@ Toolbar
 <!-- Potential for this to be a live demo - check instead -->
 <SlidevVideo  controls>
   <!-- Anything that can go in a HTML video element. -->
-  <source src="live-example.mp4" type="video/mp4" />
+  <source src="/live-example.mp4" type="video/mp4" />
 </SlidevVideo>
 
 ---
@@ -703,6 +721,7 @@ Feature flagging services
 - self hosted feature flagging service - https://unleash.github.io/
 - Config cat - https://configcat.com/
 - Launch Darkly - https://launchdarkly.com/
+- Posthog - https://posthog.com/
 
 
 Repositories
