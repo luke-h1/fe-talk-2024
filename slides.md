@@ -133,7 +133,7 @@ clicks: 2
 ## Benefits
 
 
-A/B Testing
+A/B Testing / variant testing
 
 ::a::
 
@@ -355,7 +355,7 @@ export default featureFlags;
 
 <div v-click="2">
 
-> Using a third party service such as config cat or your own feature flag API
+> Using a third party service such as posthog or your own feature flag API
 
 <br />
 
@@ -374,7 +374,7 @@ const MyComp = () => {
 Do I need to be able to change the feature flag without a code change? If the answer is yes, then you should use a third party service. If the answer is no, then you can use a central file in your codebase to store your feature flags. For simplicity we're going to be using a file based feature flag -->
 
 
---- 
+---
 layout: comparison
 ---
 
@@ -454,30 +454,31 @@ layout: center
 
 <img src="/cat-laptop.gif" class="w-78"  />
 
-<!-- Now that we know a bit what a typical feature flag looks like, let's look at a real world demo with config cat-->
+<!-- Now that we know a bit what a typical feature flag looks like, let's look at a real world demo with posthog-->
 
 
 
 --- 
 layout: center
---- 
+---
 
-## Our awesome blog site is going live 🥳🎉
+## Our client wants an engineering blog to be added to their site
 
-<img src="/blog-page.png" class="w-78"  />
+<img src="/blog-page.png" class="w-350"  />
 
-<!-- our goal with this exercise is to control this blog site with a feature flag. Perhaps we have a grand opening of our website and we want to do a big reveal at lunch time -->
+<!-- We have a problem. Our client wants to make a grand reveal of their new blog feature on their site. It's going to be super popular and everyone is going to love it. But they want the ability to turn it on themselves, almost like a ribbon cutting. Our goal with this exercise is to control this new feature with a feature flag. -->
 
 
 --- 
 layout: center
 --- 
-## Config cat
+## Posthog
 
-<img src="/config-cat.png" class="w-78"  />
+<img src="/posthog.png" class="w-350"  />
 
 
-<!-- To achieve this, we'll be using config cat. config cat is a really good feature flagging service. It also a generous free tier and other goodies that we're going to take a quick look at -->
+<!-- To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It also a generous free tier and other goodies that we're going to take a quick look at -->
+
 
 
 --- 
@@ -486,63 +487,88 @@ layout: center
 ## Creating a feature flag
 
 
-<!-- so to create a feature flag in config cat, it's really simple. We just need to give it a descriptive name, a key (this is what will be used in our frontend code) and a bit of metadata -->
-
-<img src="/create-ff-2.png" class="w-350"  />
-
-TODO: make a gif of this perhaps / more interactive
-
----
---- 
-
-## Add any percentages or segmentation you want to use
-
-<img src="/percentage.png" class="w-350"  />
+<!-- so to create a feature flag in posthog, it's really simple. a key (this is what will be used in our frontend code), We just need to give it a descriptive name, and what users we want to release to. we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID -->
 
 
-<!-- if you only want to expose it to certain amount of users, you can control the percentages as well as create user segments -->
+<img src="/create-posthog.png" class="w-350"  />
+
+
 
 --- 
-clicks: 4
+layout: center
 --- 
 
-## Add the SDK to your project  
+The current state of our client's codebase
 
-<!-- this is probably the simplest part I'd argue, it's super easy to get started. All we do is install the dependency, import it, and then move on to data fetching. We get the feature flag we want by calling `getValueAsync`, with a default value of false if the API call to config cat fails for any reason and then return the flag along with the posts -->
-
-<div v-click="1">
-
-```typescript
-pnpm i configcat-js-ssr
-```
-
-</div>
-
-
-<div v-click="2">
-
-```typescript
-import * as configcat from "configcat-js-ssr";
-```
-</div>
-
-<div v-click="3">
 
 ```typescript 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const client = configcat.getClient(process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY);
+interface Props {
+  posts: Post[];
+}
 
-  // default value of false if the API call fails
-  const enableBlogFeature = await client.getValueAsync("blogFeature", false);
+export default function HomePage({ posts }: Props) {
+  return (
+    <Layout home>
+      <section className={clsx(utilStyles.headingMd, utilStyles.padding1px)}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {posts &&
+            posts.map((post) => (
+              <li className={utilStyles.listItem} key={post.id}>
+                <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  <Date dateString={post.date as unknown as string} />
+                </small>
+              </li>
+            ))}
+        </ul>
+      </section>
+    </Layout>
+  );
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const posts = getSortedPosts();
-
   return {
     props: {
-      enableBlogFeature,
       posts,
     },
   };
 };
+```
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 0.6rem;
+    --slidev-code-line-height: calc(0.6rem * 1.5);
+  }
+</style>
+
+<!-- Before we get started with integrating our app with posthog, let's have a peak at the current state of play. Our codebase is fairly simple, for demo purposes. We just have a homepage that loops over some posts and displays them in a list with a link to go to the blog post. For anyone unfamiliar with Next.js, we fetch our posts in this `getServerSideProps` function. All this does is fetch data at runtime on the server side before we render any html. We then pass that data (in this case our posts) to our HomePage component. Turn turn this page into something that's controlled by our client via a feature flag, it's super simple -->
+
+
+--- 
+clicks: 2
+--- 
+
+## Add the SDK to your project  
+
+<!-- The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables
+-->
+
+<div v-click="1">
+```typescript
+pnpm i posthog-js
+```
+</div>
+
+<div v-click="2">
+
+```typescript
+// .env
+
+NEXT_PUBLIC_POSTHOG_KEY="your-api-key"
+NEXT_PUBLIC_POSTHOG_HOST="your-region"
 ```
 </div>
 
@@ -552,36 +578,50 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
 ## Using the feature flag to determine what to show
 
-```typescript 
-export default function Home({ posts, enableBlogFeature }: Props) {
-  return (
-    <>
-      {enableBlogFeature ? (
-        <section className={clsx(utilStyles.headingMd, utilStyles.padding1px)}>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
-          <ul className={utilStyles.list}>
-            {posts &&
-              posts.map((post) => (
-                <li className={utilStyles.listItem} key={post.id}>
-                  <Link href={`/posts/${post.id}`}>{post.title}</Link>
-                  <br />
-                  <small className={utilStyles.lightText}>
-                    <Date dateString={post.date as unknown as string} />
-                  </small>
-                </li>
-              ))}
-          </ul>
-        </section>
-      ) : (
+```typescript{1|4|6|7,8,9,10,11,12|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32}
+import { useFeatureFlagEnabled } from "posthog-js";
+
+export default function Home({ posts }: Props) {
+  const blogEnabled = useFeatureFlagEnabled("blog");
+
+  if (!blogEnabled) {
+    return (
+      <Layout>
         <div className="card">
-          <h2>Feature is off</h2>
+          <h2>Come back at 12PM for the grand opening 🥳</h2>
         </div>
-      )}
-    </>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout home>
+      <section className={clsx(utilStyles.headingMd, utilStyles.padding1px)}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {posts &&
+            posts.map((post) => (
+              <li className={utilStyles.listItem} key={post.id}>
+                <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  <Date dateString={post.date as unknown as string} />
+                </small>
+              </li>
+            ))}
+        </ul>
+      </section>
+    </Layout>
   );
 }
 ```
 
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 0.5rem;
+    --slidev-code-line-height: calc(0.5rem * 1.5);
+  }
+</style>
 <!-- Now we pass posts and enableBlogFeature feature flag down to our page. If the feature flag is enabled we show the blog posts if not we just let the user know that the feature is disabled -->
 
 
@@ -601,16 +641,56 @@ clicks: 2
 
 ::b::
 <div v-click="2">
-<img src="/feature-off.png" class="w-78"  />
+<img src="/grand-opening.gif" class="w-78"  />
 </div>
 
 
 --- 
 --- 
 
-# Finito / Question time
+Overrides ????
 
 
+<img src='/hmm.gif' class='w-100' />
+
+<!-- This is great and everything, we have our feature flag setup, but what if we want our testers to be able to verify this works or perhaps our client wants to check it out and make sure everything is to there liking? like we mentioned before a little earlier in the talk, we can override feature flags without turning them on for everyone. -->
+
+
+---
+clicks: 1
+--- 
+
+Toolbar
+
+<div v-click="1">
+<img src="/toolbar.png" class='w-70' />
+</div>
+
+
+<!-- in posthog we have this thing called the toolbar. The toolbar is a widget like tool you can allow posthog to embed in your website. -->
+
+---
+---
+
+<div class='mt-15'>
+<img src="/auth-urls.png" class='w-750' />
+</div>
+<!-- if we click into this we can see we have these authorised URLs. You can see I've got a few of my domains here as I use posthog for my website. Since we've authorised it for localhost, let's visit our client's website and see what shows up  -->
+---
+--- 
+
+<!-- Potential for this to be a live demo - check instead -->
+<SlidevVideo  controls>
+  <!-- Anything that can go in a HTML video element. -->
+  <source src="live-example.mp4" type="video/mp4" />
+</SlidevVideo>
+
+---
+---
+
+
+
+# Conclusion/Question time :)
 
 ### Resources:
 
