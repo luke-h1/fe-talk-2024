@@ -8,7 +8,6 @@ lineNumbers: true
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
-
   Learn more at [Sli.dev](https://sli.dev)
 drawings:
   persist: false
@@ -23,6 +22,7 @@ title: Feature Flags (FE Sheffield May)
 </p>
 
 #### Frontend Sheffield May 2024
+
 
 ---
 layout: two-cols
@@ -61,7 +61,8 @@ layout: two-cols
 
 <!--
 at the moment I work for sky bet
-been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that. Today we're going to be talking about feature flags and why you might want to use them
+been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that.
+Today we're going to be talking about feature flags and why you might want to use them
 -->
 
 ---
@@ -118,6 +119,7 @@ feature flags are a way to control the visibility of features in your app. They'
 ---
 clicks: 2
 ---
+
 ## Quick example
 
 <div v-click='1'>
@@ -130,7 +132,6 @@ clicks: 2
 <div v-click="2">
 <img src='/amazon-recs.png' class='w-150' />
 </div>
-
 
 <!--
 here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. These cards could be controlled under a feature flag based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it.
@@ -169,7 +170,7 @@ A/B Testing / variant testing
 </div>
 
 <!--
-Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where you release to small subsets of users to test whether user's like the first design or the last design
+Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where you release to small subsets of users to test whether user's like the first design or the last design. It's called a/b or variant testing because you're exposing a user to a or b. variant black button or variant red button
 -->
 
 ---
