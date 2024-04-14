@@ -60,9 +60,7 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
-at the moment I work for sky bet
-been there for just under a year now, been a developer for about two years and a QA engineer for about 2 years before that.
-Today we're going to be talking about feature flags and why you might want to use them
+ at the moment I work for sky bet as a developer. I've been a developer for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
 -->
 
 ---
