@@ -67,9 +67,11 @@ layout: two-cols
 layout: center
 ---
 
+## Topics
+
 * Software delivery
 * What are feature flags
-* What is a/b testing
+* What is a/b testing with an example
 * Industry usage
 * Typical code patterns w/ feature flags and a/b tests
 * Real world example with PostHog
@@ -119,7 +121,7 @@ Before we get into feature flags and why they're great, I wanted to talk a littl
 
 ## What are feature flags?
 
-You can think of feature flags like light switches.
+Light switch
 
 <img src="/homer-light-switch.gif" class="m-2" />
 
@@ -130,10 +132,15 @@ feature flags are a way to control the visibility of features in your app. They'
 ---
 ---
 
-# what is a/b testing?
+# what is a/b testing? + a quick example
 
-todo
+<img src="/ab-testing.png" class="w-150" />
 
+A/B testing is a way to expose users to two different versions of a feature to see which one performs better.
+
+<!-- A/B tests consists of a randomized experiment that usually involves two variants, although you can have multiple variants of the same. When I say variant, I just mean groups of users. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature so we'll be using two variants (control and experiment). So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room-->
+
+<!--  -->
 
 ---
 clicks: 2
@@ -348,7 +355,8 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
   "description": "A new feature",
   "enabled": true,
    "overides": {
-    "cookie": "new-feature=true",
+    "cookie": "new-feature",
+    "value": "true"
    },
    "percentage": 10
 }
@@ -377,11 +385,11 @@ layout: comparison
 
 const featureFlags: FeatureFlag[] = [
   {
-    name: 'talks',
-    description: 'Whether to show the talks page',
+    name: 'redesign-2024',
+    description: 'Whether to show the new redesigned page',
     enabled: false,
     overrides: {
-    name: 'show-talks',
+    name: 'show-redesign-2024',
     value: true,    
   },
     percentage: 10,
@@ -450,11 +458,7 @@ Central file based feature flag implementation
 // src/useFeatureFlag.ts
 import featureFlags from '@frontend/utils/featureFlags';
 
-const AllowedFeatureFlags = ['new-feature', 'another-feature'] as const;
-
-type AllowedFeatureFlag = typeof AllowedFeatureFlags[number];
-
-const useFeatureFlag = (name: AllowedFeatureFlag): boolean => {
+const useFeatureFlag = (name: string): boolean => {
   const featureFlag = featureFlags.find(flag => flag.name === name);
 
   if (!featureFlag) {
