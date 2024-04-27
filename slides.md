@@ -64,6 +64,19 @@ layout: two-cols
 -->
 
 ---
+layout: center
+---
+
+* Software delivery
+* What are feature flags
+* What is a/b testing
+* Industry usage
+* Typical code patterns w/ feature flags and a/b tests
+* Real world example with PostHog
+
+<!-- background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example with something called PostHog -->
+
+---
 layout: comparison
 clicks: 6
 ---
@@ -111,8 +124,16 @@ You can think of feature flags like light switches.
 <img src="/homer-light-switch.gif" class="m-2" />
 
 <!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. They're usually paired with weighting algorithms allows you to release in small increments. you don't want to release a feature to 100% of your users, you want to slowly release. Now that we know what a feature flag is, who uses them?
+feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app and this. They're usually paired with weighting algorithms allows you to release in small increments. you don't want to release a feature to 100% of your users, you want to slowly release and this allows us to deliver safer experiences to our users. 
 -->
+
+---
+---
+
+# what is a/b testing?
+
+todo
+
 
 ---
 clicks: 2
@@ -124,7 +145,6 @@ clicks: 2
 
 <img src='/feature-example.png' class='w-150' />
 </div>
-
 
 
 <div v-click="2">
@@ -476,10 +496,13 @@ layout: center
  }
 
 ```
+---
 
 
 ---
+--- 
 
+todo: a/b testing code patterns
 
 
 
