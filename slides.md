@@ -132,15 +132,13 @@ feature flags are a way to control the visibility of features in your app. They'
 ---
 ---
 
-# what is a/b testing? + a quick example
+# what is a/b testing?
 
 <img src="/ab-testing.png" class="w-150" />
 
 A/B testing is a way to expose users to two different versions of a feature to see which one performs better.
 
-<!-- A/B tests consists of a randomized experiment that usually involves two variants, although you can have multiple variants of the same. When I say variant, I just mean groups of users. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature so we'll be using two variants (control and experiment). So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room-->
-
-<!--  -->
+<!-- A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room-->
 
 ---
 clicks: 2
@@ -149,7 +147,6 @@ clicks: 2
 ## Quick example
 
 <div v-click='1'>
-
 <img src='/feature-example.png' class='w-150' />
 </div>
 
@@ -159,7 +156,7 @@ clicks: 2
 </div>
 
 <!--
-We have a new feature > we control that via a feature flag and based on whether it's enabled we determine whether to present a feature to a user. As an example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. These cards could be controlled under a feature flag based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it.
+ As an example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. These cards could be controlled under a feature flag based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it.
 -->
 
 ---
@@ -169,7 +166,7 @@ We have a new feature > we control that via a feature flag and based on whether 
 <img src="/fargo.gif" class="m-2 w-80" />
 
 <!--
-So now we know roughly what a feature flag is and how it might be used, you might be thinking  what's in it for me and my projects? So I've popped together a few examples on what you can use feature flags for
+So now we have a bit of background on feature flags, you might be thinking  what's in it for me and my projects? So we're going to go thru a few examples
 -->
 
 ---
@@ -180,7 +177,7 @@ clicks: 2
 ## Benefits
 
 
-A/B Testing / variant testing
+A/B testing
 
 ::a::
 
@@ -195,7 +192,7 @@ A/B Testing / variant testing
 </div>
 
 <!--
-Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where you release to small subsets of users to test whether user's like the first design or the last design. It's called a/b or variant testing because you're exposing a user to a or b. variant black button or variant red button
+Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where we release to a small subsets of users to test whether user's like the first design or the last design
 -->
 
 ---
@@ -220,7 +217,7 @@ Error Banners
 </div>
 
 <!--
-maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, bannering your site with a feature flag while you're fixing things would be a great option for that
+maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, bannering your site with a feature flag while you're fixing things would be a great option for that. So our site might normally look like this, and when we enable the error banner flag, our site might look like this
 -->
 
 ---
@@ -253,7 +250,7 @@ window.cookie = 'new-button-feature=true'
 </div>
 
 <!--
-This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders view the work in production without potentially releasing something broken to your users
+This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders view the work in production without the rest of your users seeing it
 -->
 
 ---
@@ -269,7 +266,7 @@ Percentage rollouts
 You can release your feature to a percentage of your users instead of everyone all at once
 
 <!--
-Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of state and is not so easily implemented. That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws cloudwatch evidently etc. The crux of the problem is that you need some way of identifying a user in order to determine what cohort to put them in. Not so hard if you've got user authentication as you can just determine the total users of your service and then do some maths to get 10%. But if you're just running a public website, it's harder to determine what buckets to put a user in and it needs a bit of thought on how you want to proceed with that.
+We've touched on this a bit and this is what we'll be using a/b testing for. Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of determining how many users you have and is not so easily implemented. You can do some rough maths to implement your own a/b testing platform but it won't be 100% accurate (we'll get into that a bit later). That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws evidently things like that
 -->
 
 ---
@@ -332,14 +329,14 @@ layout: comparison
 </div>
 
 <!--
-Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of cash gets burned. Feature flags are usually combined with some sort of weighting algorithm so that features are rolled out gradually to percentages of users instead of everyone all at once. If a feature goes bang, then we're not affecting 100% of our user base. Performance: Your new feature might be calling some other services and businesses will use feature flags to slowly roll out a feature
+Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of cash gets burned
 -->
 
 ---
 
 # Feature flag code patterns
 
-<!-- we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how it would be used in the real world -->
+<!-- we're going to go over the two primary patterns for creating feature flags + a/b tests and then we're going to look at a quick demo on how it would be used in the real world -->
 
 <img src="/giphy.gif" class="w-78" />
 
@@ -358,7 +355,6 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
     "cookie": "new-feature",
     "value": "true"
    },
-   "percentage": 10
 }
 
 ```
@@ -386,14 +382,13 @@ layout: comparison
 const featureFlags: FeatureFlag[] = [
   {
     name: 'redesign-2024',
-    description: 'Whether to show the new redesigned page',
+    description: 'new redesigned page',
     enabled: false,
     overrides: {
     name: 'show-redesign-2024',
     value: true,    
   },
-    percentage: 10,
-  },
+},
 ];
 export default featureFlags;
 ```
@@ -419,16 +414,14 @@ const MyComp = () => {
 </div>
 
 <!--
-Using a central file in your codebase. Simple way of getting started with feature flags.We've got somesimple fields here, the feature name, a description, whether it's enabled,some way of overriding the feature flag (in this case we're using a cookie) and finally a percentage (bear in mind this will only work if you have some way of doing maths and figuring out how to identify a user) 
-. If after this talk you're wondering which one to use, ask yourself this question:
-Do I need to be able to change the feature flag without a code change? If the answer is yes, then you should use a third party service. If the answer is no, then you can use a central file in your codebase to store your feature flags.
+Using a file in your codebase. Simple way of getting started with feature flags. We've got some simple fields here, the feature name, a description, whether it's enabled,some way of overriding the feature flag (in this case we're using a cookie)
 -->
 
 ---
 layout: comparison
 ---
 
-Central file based feature flag implementation
+file based feature flag implementation
 
 
 ```typescript
@@ -436,25 +429,23 @@ Central file based feature flag implementation
 
 export const featureFlags: FeatureFlag[] = [
   {
-    name: 'talks',
-    description: 'Whether to show the talks page and navigation item',
+    name: 'redesign-2024',
+    description: 'Redesigned page',
     enabled: false,
     overrides: {
-      name: 'show-talks',
+      name: 'redeisgn-2024',
       value: true,
     },
-    percentage: 10,
   },
 ];
 ```
 
-
 ---
 
-Central file based feature flag implementation
+file based feature flag implementation
 
 
-```typescript{2|4|6|7|9|11,12,13|15|17,18|20}
+```typescript{4|5|7,8,9|11|13,14|16}
 // src/useFeatureFlag.ts
 import featureFlags from '@frontend/utils/featureFlags';
 
@@ -500,11 +491,15 @@ layout: center
  }
 
 ```
+
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 1.3rem;
+    --slidev-code-line-height: calc(1.3rem * 1.5);
+  }
+</style>
 ---
 
-
----
---- 
 
 todo: a/b testing code patterns
 
