@@ -504,6 +504,63 @@ layout: center
 todo: a/b testing code patterns
 
 
+```typescript
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+
+let counter = 0;
+
+const useABTesting = (cookieName) => {
+  const [variant, setVariant] = useState<boolean>();
+
+  useEffect(() => {
+    let abTest = Cookies.get(cookieName);
+
+    if (!abTest && counter < 1000) {
+      abTest = Math.random() < 0.5 ? 'A' : 'B';
+      Cookies.set(cookieName, abTest);
+    }
+
+    setVariant(abTest === 'A');
+    counter++;
+  }, [cookieName]);
+
+  return variant;
+};
+```
+
+
+```typescript
+import { renderHook, act } from '@testing-library/react-hooks';
+import Cookies from 'js-cookie';
+import useABTesting from './useABTesting';
+
+jest.mock('js-cookie');
+
+describe('useABTesting', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should set cookie for first 1000 users only', () => {
+    Cookies.get.mockReturnValue(undefined);
+    Cookies.set.mockImplementation(() => {});
+
+    // Simulate 2000 users visiting the site
+    for (let i = 0; i < 2000; i++) {
+      act(() => {
+        renderHook(() => useABTesting('test'));
+      });
+    }
+
+    // Expect the cookie to have been set 1000 times
+    expect(Cookies.set).toHaveBeenCalledTimes(1000);
+  });
+});
+```
+
+
+
 
 ---
 layout: center
