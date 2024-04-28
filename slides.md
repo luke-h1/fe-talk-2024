@@ -507,23 +507,31 @@ todo: a/b testing code patterns
 ```typescript
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import Redis from 'ioredis';
 
-let counter = 0;
+const redis = new Redis();
 
-const useABTesting = (cookieName) => {
+const useABTesting = async () => {
   const [variant, setVariant] = useState<boolean>();
+  const cookieName = 'abTest';
 
   useEffect(() => {
-    let abTest = Cookies.get(cookieName);
+    const getAndSetVariant = async () => {
+      let abTest = Cookies.get(cookieName);
 
-    if (!abTest && counter < 1000) {
-      abTest = Math.random() < 0.5 ? 'A' : 'B';
-      Cookies.set(cookieName, abTest);
-    }
+      const counter = await redis.get('counter') || '0';
 
-    setVariant(abTest === 'A');
-    counter++;
-  }, [cookieName]);
+      if (!abTest && parseInt(counter) < 1000) {
+        abTest = Math.random() < 0.5 ? 'A' : 'B';
+        Cookies.set(cookieName, abTest);
+        await redis.incr('counter');
+      }
+
+      setVariant(abTest === 'A');
+    };
+
+    getAndSetVariant();
+  }, []);
 
   return variant;
 };
@@ -533,22 +541,41 @@ const useABTesting = (cookieName) => {
 ```typescript
 import { renderHook, act } from '@testing-library/react-hooks';
 import Cookies from 'js-cookie';
+import Redis from 'ioredis';
 import useABTesting from './useABTesting';
 
 jest.mock('js-cookie');
+jest.mock('ioredis');
 
 describe('useABTesting', () => {
+  let getMock;
+  let incrMock;
+
+  beforeEach(() => {
+    getMock = jest.fn();
+    incrMock = jest.fn();
+
+    Redis.mockImplementation(() => {
+      return {
+        get: getMock,
+        incr: incrMock,
+      };
+    });
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
-  it('should set cookie for first 1000 users only', () => {
+  it('should set cookie for first 1000 users only', async () => {
     Cookies.get.mockReturnValue(undefined);
     Cookies.set.mockImplementation(() => {});
 
     // Simulate 2000 users visiting the site
     for (let i = 0; i < 2000; i++) {
-      act(() => {
+      getMock.mockResolvedValueOnce(i.toString());
+
+      await act(async () => {
         renderHook(() => useABTesting('test'));
       });
     }
