@@ -515,13 +515,17 @@ const useABTesting = async () => {
   const [variant, setVariant] = useState<boolean>();
   const cookieName = 'abTest';
 
+
   useEffect(() => {
     const getAndSetVariant = async () => {
       let abTest = Cookies.get(cookieName);
 
       const counter = await redis.get('counter') || '0';
 
-      if (!abTest && parseInt(counter) < 1000) {
+      const FIFTY_PERCENT_OF_USERS = 1000;
+
+      if (!abTest && parseInt(counter) < FIFTY_PERCENT_OF_USERS) {
+        // 1 or 0
         abTest = Math.random() < 0.5 ? 'A' : 'B';
         Cookies.set(cookieName, abTest);
         await redis.incr('counter');
