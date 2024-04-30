@@ -366,7 +366,7 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 
 # Feature flag code patterns
 
-<!-- we're going to go over the two primary patterns for creating feature flags + a/b tests and then we're going to look at a quick demo on how it would be used in the real world -->
+<!-- we're going to go over the two primary patterns for creating feature flags + a/b tests and then we're going to look at a quick demo on how it would be used in the real world. -->
 
 <img src="/giphy.gif" class="w-78" />
 
@@ -754,7 +754,7 @@ NEXT_PUBLIC_POSTHOG_HOST="your-region"
 
 ## Using the feature flag to determine what to show
 
-```typescript{1|4|6|7,8,9,10,11,12|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32}
+```typescript{1|4|6,7,8,9,10,11,12,13,14|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34}
 import { useFeatureFlagEnabled } from "posthog-js";
 
 export default function Home({ posts }: Props) {
