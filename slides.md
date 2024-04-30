@@ -60,21 +60,48 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
- at the moment I work for sky bet as a developer. I've been a developer for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
+ at the moment I work for sky bet as a dev. I've been a dev for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
 -->
 
 ---
 layout: center
+clicks: 7
 ---
 
 ## Topics
 
-* Software delivery
-* What are feature flags
-* What is a/b testing with an example
-* Industry usage
-* Typical code patterns w/ feature flags and a/b tests
-* Real world example with PostHog
+
+<!-- align to left -->
+<div class='text-left'>
+
+<div v-click="1">
+ <Star /> Software delivery 🚚
+</div>
+
+<div v-click="2">
+ <Star /> What are feature flags ⛳️
+</div>
+
+<div v-click="3">
+ <Star /> What is a/b testing 🧪
+</div>
+
+<div v-click="4">
+ <Star /> Benefits 🎉
+ </div>
+
+<div v-click="5">
+ <Star /> Industry usage 🏢
+</div>
+
+<div v-click="6">
+ <Star /> Code patterns 🧑‍💻
+ </div>
+
+ <div v-click="7">
+  <Star /> Real world example 🌍
+  </div>
+</div>
 
 <!-- background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example with something called PostHog -->
 
@@ -84,7 +111,6 @@ clicks: 6
 ---
 
 ## How do we deliver software
-
 
 <div v-click="1">
 <p>Feature / need</p> 
@@ -113,8 +139,9 @@ clicks: 6
 <p class='text-red'>What happens when something goes wrong at one of these stages?</p>
 </div>
 
+
 <!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature you deployed to production blows everything up and causes a horrible experience for your users. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
 -->
 
 ---
@@ -126,7 +153,7 @@ Light switch
 <img src="/homer-light-switch.gif" class="m-2" />
 
 <!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app and this. They're usually paired with weighting algorithms allows you to release in small increments. you don't want to release a feature to 100% of your users, you want to slowly release and this allows us to deliver safer experiences to our users. 
+feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off. They're usually paired with some sort of a/b test algorithm which will allow you to release your feature to small percentages of users. Typically with big features, you don't want to release a feature to 100% of your users, you want to slowly release to small percentages of users to test whether your feature is going to cause problems in production.
 -->
 
 ---
@@ -146,14 +173,16 @@ clicks: 2
 
 ## Quick example
 
-<div v-click='1'>
-<img src='/feature-example.png' class='w-150' />
-</div>
+<img src='/ff-ex.png' class='w-350' />
 
 
-<div v-click="2">
-<img src='/amazon-recs.png' class='w-150' />
-</div>
+
+---
+---
+
+## Quick example
+
+<img src='/amazon-recs.png' class='w-350' />
 
 <!--
  As an example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. These cards could be controlled under a feature flag based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it.
