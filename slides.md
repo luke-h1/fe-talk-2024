@@ -289,7 +289,7 @@ layout: comparison
 
 Percentage rollouts
 
-<img src="/perc.png" class="m-1" />
+<img src="/perc-rollout.png" class="m-1" />
 
 You can release your feature to a percentage of your users instead of everyone all at once
 
@@ -307,12 +307,12 @@ layout: comparison
 
 Segmented rollouts
 
-<img src="/perc.png" class="m-1" />
+<img src="/segment-rollout.png" class="m-1" />
 
 Admins, Moderators, certain teams etc.
 
 <!--
-Perhaps you want to release to certain groups only, and see if your feature has a positive impact. Similar to percentage based rollouts but we are exposing feature to users with specific attributes. Such as only paid users, admins, etc.
+Similar to percentage based rollouts but we are exposing features to users with specific attributes.This could be something such as only releasing to admins, paid users, users in a certain region etc.
 -->
 
 ---
