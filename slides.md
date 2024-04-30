@@ -165,17 +165,16 @@ feature flags are a way to control the visibility of features in your app. They'
 
 A/B testing is a way to expose users to two different versions of a feature to see which one performs better.
 
-<!-- A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room-->
+<!-- A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. -->
 
 ---
-clicks: 2
 ---
 
 ## Quick example
 
 <img src='/ff-ex.png' class='w-350' />
 
-
+<!-- So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room -->
 
 ---
 ---
@@ -185,17 +184,17 @@ clicks: 2
 <img src='/amazon-recs.png' class='w-350' />
 
 <!--
- As an example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend for a bit. These cards could be controlled under a feature flag based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see and gather data based on it.
+ As a real world example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend. These cards could be controlled under a feature flag and an a/b test based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
 -->
 
 ---
 
 ## Benefits
 
-<img src="/fargo.gif" class="m-2 w-80" />
+<img src="/fargo.gif" class="m-2 w-100" />
 
 <!--
-So now we have a bit of background on feature flags, you might be thinking  what's in it for me and my projects? So we're going to go thru a few examples
+So now we have a bit of background on feature flags, you might be thinking what's in it for me and my projects? So we're going to go thru a few examples
 -->
 
 ---
@@ -221,7 +220,7 @@ A/B testing
 </div>
 
 <!--
-Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with staggered rollouts where we release to a small subsets of users to test whether user's like the first design or the last design
+Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with releasing to a small subsets of users to test whether user's like the first design or the last design
 -->
 
 ---
@@ -279,7 +278,7 @@ window.cookie = 'new-button-feature=true'
 </div>
 
 <!--
-This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders view the work in production without the rest of your users seeing it
+This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work to production under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders etc. view the work in production without the rest of your users seeing it
 -->
 
 ---
