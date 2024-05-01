@@ -60,7 +60,7 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
- at the moment I work for sky bet as a dev. I've been a dev for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
+at the moment I work for sky bet as a dev. I've been a dev for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
 -->
 
 ---
@@ -103,7 +103,9 @@ clicks: 7
   </div>
 </div>
 
-<!-- background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example with something called PostHog -->
+<!--
+background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example with something called PostHog
+-->
 
 ---
 layout: comparison
@@ -139,7 +141,6 @@ clicks: 6
 <p class='text-red'>What happens when something goes wrong at one of these stages?</p>
 </div>
 
-
 <!--
 Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
 -->
@@ -157,7 +158,6 @@ feature flags are a way to control the visibility of features in your app. They'
 -->
 
 ---
----
 
 # what is a/b testing?
 
@@ -165,18 +165,20 @@ feature flags are a way to control the visibility of features in your app. They'
 
 A/B testing is a way to expose users to two different versions of a feature to see which one performs better.
 
-<!-- A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. -->
+<!--
+A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
+-->
 
----
 ---
 
 ## Quick example
 
 <img src='/ff-ex.png' class='w-350' />
 
-<!-- So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room -->
+<!--
+So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room
+-->
 
----
 ---
 
 ## Quick example
@@ -184,7 +186,7 @@ A/B testing is a way to expose users to two different versions of a feature to s
 <img src='/amazon-recs.png' class='w-350' />
 
 <!--
- As a real world example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend. These cards could be controlled under a feature flag and an a/b test based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
+As a real world example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend. These cards could be controlled under a feature flag and an a/b test based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
 -->
 
 ---
@@ -470,6 +472,7 @@ export const featureFlags: FeatureFlag[] = [
 ];
 ```
 
+
 ---
 
 file based feature flag implementation
@@ -528,8 +531,9 @@ layout: center
     --slidev-code-line-height: calc(1.3rem * 1.5);
   }
 </style>
----
 
+
+---
 
 todo: a/b testing code patterns
 
@@ -621,8 +625,6 @@ describe('useABTesting', () => {
 ```
 
 
-
-
 ---
 layout: center
 ---
@@ -662,7 +664,6 @@ To achieve this, we'll be using posthog. Posthog is a really good feature flaggi
 ---
 
 ## Creating a feature flag
-
 
 <!-- so to create a feature flag in posthog, it's really simple. a key (this is what will be used in our frontend code), We just need to give it a descriptive name, and what users we want to release to. we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID -->
 
@@ -721,7 +722,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 </style>
 
 <!--
-Before we get started with integrating our app with posthog, let's have a peak at the current state of play. Our codebase is fairly simple, for demo purposes. We just have a homepage that loops over some posts and displays them in a list with a link to go to the blog post. For anyone unfamiliar with Next.js, we fetch our posts in this `getServerSideProps` function. All this does is fetch data at runtime on the server side before we render any html. We then pass that data (in this case our posts) to our HomePage component. Turn turn this page into something that's controlled by our client via a feature flag, it's super simple
+Before we get started with integrating our app with posthog, let's have a peak at the current state of play. Our codebase is fairly simple, for demo purposes. We just have a homepage that loops over some posts and displays them in a list with a link to go to the blog post. For anyone unfamiliar with Next.js, we fetch our posts in this `getServerSideProps` function. All this does is fetch data at runtime on the server side before we render any html. We then pass that data (in this case our posts) to our HomePage component. Let's turn this page into something that's controlled via a feature flag.
 -->
 
 ---
