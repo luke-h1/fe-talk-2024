@@ -534,15 +534,30 @@ layout: center
 
 
 ---
+clicks: 4
+---
+
+## a/b testing code patterns
+
+
+<div v-click="1">
+  <Star /> Self hosted
+</div>
+
+<div v-click="2">
+  <Star />Using a service such as LaunchDarkly or PostHog
+</div>
+
+---
 layout: center
 ---
 
-# Real world example
+# Real world example / a/b testing with posthog
 
 <img src="/cat-laptop.gif" class="w-78"  />
 
 <!--
-Now that we know a bit what a typical feature flag looks like and how to use it without a third-party service, let's look at a real world demo with posthog
+Now that we know a bit what typical feature flags and a/b tests looks like and how to use it, let's look at a real world demo with posthog
 -->
 
 ---
@@ -551,10 +566,10 @@ layout: center
 
 ## Our client wants an engineering blog to be added to their site
 
-<img src="/blog-page.png" class="w-350"  />
+<img src="/blog-page.png" class="w-120"  />
 
 <!--
-We have a problem. Our client wants to make a grand reveal of their new blog feature on their site. It's going to be super popular and everyone is going to love it. But they want the ability to turn it on themselves, almost like a ribbon cutting. Our goal with this exercise is to control this new feature with a feature flag.
+We have a problem. Our client wants to make a grand reveal of their new blog feature on their site. They're projected to get 100k users and everyone is going to love it. But they're not sure if their website can handle the traffic. So our goal with this exercise is to control this new feature with a feature flag and a/b test it to a small percentage of users to make sure this amazing blog isn't going to blow up their site
 -->
 
 ---
@@ -566,14 +581,14 @@ layout: center
 <img src="/posthog.png" class="w-350"  />
 
 <!--
-To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It also a generous free tier (about a million free requests a month or something like that) and other goodies that we're going to take a quick look at
+To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It's a generous free tier (about a million free requests a month or something like that) and other goodies that we're going to take a quick look at
 -->
 
 ---
 
 ## Creating a feature flag
 
-<!-- so to create a feature flag in posthog, it's really simple. a key (this is what will be used in our frontend code), We just need to give it a descriptive name, and what users we want to release to. we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID -->
+<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name, and what users we want to release to. This is caleld a release condition in posthog and we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
 
 
 <img src="/create-posthog.png" class="w-350"  />
@@ -586,7 +601,7 @@ layout: center
 The current state of our client's codebase
 
 
-```typescript 
+```typescript{5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25|27,28,29,30,31,32,33,34}
 interface Props {
   posts: Post[];
 }
@@ -622,6 +637,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   };
 };
 ```
+
 <style>
   .slidev-layout {
     --slidev-code-font-size: 0.6rem;
@@ -630,7 +646,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 </style>
 
 <!--
-Before we get started with integrating our app with posthog, let's have a peak at the current state of play. Our codebase is fairly simple, for demo purposes. We just have a homepage that loops over some posts and displays them in a list with a link to go to the blog post. For anyone unfamiliar with Next.js, we fetch our posts in this `getServerSideProps` function. All this does is fetch data at runtime on the server side before we render any html. We then pass that data (in this case our posts) to our HomePage component. Let's turn this page into something that's controlled via a feature flag.
+Before we get started with integrating posthog into the codebase, let's have a peak at the current state of play. Our codebase is fairly simple, for demo purposes. We just have a homepage that loops over some posts and displays them in a list with a link to go to the blog post. For anyone unfamiliar with Next.js, we fetch our posts in this `getServerSideProps` function. All this does is fetch data at runtime on the server side before we render any html. We then pass that data (in this case our posts) to our HomePage component. Let's turn this page into something that's controlled via a feature flag.
 -->
 
 ---
@@ -639,7 +655,7 @@ clicks: 2
 
 ## Add the SDK to your project  
 
-<!-- The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables
+<!-- Let's get on with adding posthog to our project. The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables.
 -->
 
 <div v-click="1">
@@ -661,7 +677,7 @@ NEXT_PUBLIC_POSTHOG_HOST="your-region"
 
 ---
 
-## Using the feature flag to determine what to show
+## Adding feature flags
 
 ```typescript{1|4|6,7,8,9,10,11,12,13,14|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34}
 import { useFeatureFlagEnabled } from "posthog-js";
@@ -709,7 +725,7 @@ export default function Home({ posts }: Props) {
 </style>
 
 <!--
-Now we pass posts and enableBlogFeature feature flag down to our page. If the feature flag is enabled we show the blog posts if not we just let the user know that the feature is disabled
+So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value. If the flag is disabled we return a message to the user saying come back at 12pm for the grand opening. Otherwise we return the list of blog posts as we did before.
 -->
 
 ---
@@ -731,22 +747,33 @@ clicks: 2
 <img src="/grand-opening.gif" class="w-158"  />
 </div>
 
+<!-- And that it, we've now got a feature flag controlling the visibility of our blog page. If it's enabled we show our posts or we show a message teasing users to come back later -->
+
+
 ---
---- 
+clicks: 2
+---
+
 What about a/b testing?
 
-TODO: add example on how to do a/b testing with posthog
+<div v-click="1">
+<img src='/release-condition-1.png' class='w-100' />
+</div>
+
+
+<!--
+We just need to go back to our console in posthog and alter the release condition to the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
+-->
 
 ---
 
-
-Overrides ????
+Overrides?
 
 
 <img src='/hmm.gif' class='w-100' />
 
 <!--
-This is great and everything, we have our feature flag setup, but what if we want our testers to be able to verify this works or perhaps our client wants to check it out and make sure everything is to there liking? like we mentioned before a little earlier in the talk, we can override feature flags without turning them on for everyone.
+And last but not least overrides. So we've delivered our feature, the client is happy, we have our feature and a/b test all working, but our client wants to check it out and make sure everything is to there on production. Like we mentioned before a little earlier in the talk, this isn't a problem.
 -->
 
 ---
@@ -760,7 +787,7 @@ Toolbar
 </div>
 
 <!--
-in posthog we have this thing called the toolbar. The toolbar is a widget like tool you can allow posthog to embed in your website.
+in posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website.
 -->
 
 ---
@@ -770,39 +797,34 @@ in posthog we have this thing called the toolbar. The toolbar is a widget like t
 </div>
 
 <!--
-if we click into this we can see we have these authorised URLs. You can see I've got a few of my domains here as I use posthog for my website. Since we've authorised it for localhost, let's visit our client's website and see what shows up
+All we have to do is give it access to embed into our site. Since we've authorised it for localhost, let's visit our client's website and see what shows up
 -->
 
 ---
 
-<!-- Potential for this to be a live demo - check instead -->
 <SlidevVideo  controls>
-  <!-- Anything that can go in a HTML video element. -->
   <source src="/live-example.mp4" type="video/mp4" />
 </SlidevVideo>
 
+<!-- You can see we've got a little widget that allows to turn the feature flag on super easily. -->
 
 ---
 
-# Thanks!
+## Thanks!
+
+Slides 
+- https://feature-flags-24.talks.lhowsam.com
+
 
 ### Resources:
 
-
-TODO: shorten these links / just provide QR code
-
-Slides 
-- https://fe-talk-2024.vercel.app/ + https://github.com/luke-h1/fe-talk-2024
-
+Repositories
+- Slides - https://dub.sh/felho + 
+- Redis self-hosted feature flag service - https://dub.sh/rdabtest
+- Posthog example - https://dub.sh/lhabtest
 
 Feature flagging services 
 - self hosted feature flagging service - https://unleash.github.io/
 - Config cat - https://configcat.com/
 - Launch Darkly - https://launchdarkly.com/
 - Posthog - https://posthog.com/
-
-
-Repositories
-- Slides - TODO
-- Redis self-hosted feature flag service - https://github.com/luke-h1/feature-flag-next
-- Config cat example - https://github.com/luke-h1/config-cat-next
