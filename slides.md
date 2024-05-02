@@ -41,6 +41,16 @@ layout: two-cols
     Typescript, DevOps, anything frontend :) 
     </p>
   </div>
+  
+
+  <div class="flex gap-4 items-center mt-4 text-sm">
+    <ph-linkedin-logo class="c-gray-500" />
+    <a href="https://www.linkedin.com/in/lukehowsam/">lukehowsam</a>
+  </div>
+   <div class="flex gap-4 items-center mt-4 text-sm">
+    <ph-twitter-logo class="c-gray-500" />
+    <a href="https://twitter.com/LukeH_1999">LukeH_1999</a>
+  </div>
 
   <div class="flex gap-4 items-center mt-12 text-sm">
     <ph-github-logo class="c-gray-500" />
@@ -50,17 +60,13 @@ layout: two-cols
     <ph-globe class="c-gray-500" />
     <a href="https:/lhowsam.com">lhowsam.com</a>
   </div>
-  <div class="flex gap-4 items-center mt-4 text-sm">
-    <ph-linkedin-logo class="c-gray-500" />
-    <a href="https://www.linkedin.com/in/lukehowsam/">lukehowsam</a>
-  </div>
 </div>
 
 ::right::
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
-at the moment I work for sky bet as a dev. I've been a dev for about two years and a QA engineer for about the same amount of time before that. I use feature flags and a/btesting quite a lot at work and wanted to introduce you to all the cool stuff you can do with them. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags and why you might want to use them.
+I'm a developer, working at sky betting and gaming at the mo. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. I'm on the bird site too but I only use it to like pictures of cats so bewarned. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags + a/b testing and why you might want to use them.
 -->
 
 ---
@@ -104,7 +110,7 @@ clicks: 7
 </div>
 
 <!--
-background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example with something called PostHog
+background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example
 -->
 
 ---
