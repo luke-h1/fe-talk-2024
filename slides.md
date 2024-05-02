@@ -789,6 +789,8 @@ if we click into this we can see we have these authorised URLs. You can see I've
 ### Resources:
 
 
+TODO: shorten these links / just provide QR code
+
 Slides 
 - https://fe-talk-2024.vercel.app/ + https://github.com/luke-h1/fe-talk-2024
 
