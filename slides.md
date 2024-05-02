@@ -508,7 +508,7 @@ const useFeatureFlag = (name: string): boolean => {
 </style>
 
 <!--
-We import our array of feature flags. Firstly we've got some typescript definitions here that just restrict what we're allowed to pass to the useFeatureFlag hook., and then try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. If we have found a flag, we try to look for a cookie based on the override object that we set on the feature flag to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value matches what we set in the feature flag array earlier, we return true. Otherwise we return whatever the enable value of the feature flag is.
+We import our array of feature flags and then try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. If we have found a flag, we try to look for a cookie based on the override object to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value matches what we set in the feature flag array earlier, we return true. Otherwise we return whatever the enable value of the feature flag is.
 -->
 
 ---
@@ -535,7 +535,7 @@ layout: center
 
 ---
 
-todo: a/b testing code patterns
+todo: review this slide
 
 
 ```typescript
