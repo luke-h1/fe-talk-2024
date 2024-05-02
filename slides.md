@@ -534,98 +534,6 @@ layout: center
 
 
 ---
-
-todo: review this slide
-
-
-```typescript
-import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import Redis from 'ioredis';
-
-const redis = new Redis();
-
-const useABTesting = async () => {
-  const [variant, setVariant] = useState<boolean>();
-  const cookieName = 'abTest';
-
-
-  useEffect(() => {
-    const getAndSetVariant = async () => {
-      let abTest = Cookies.get(cookieName);
-
-      const counter = await redis.get('counter') || '0';
-
-      const FIFTY_PERCENT_OF_USERS = 1000;
-
-      if (!abTest && parseInt(counter) < FIFTY_PERCENT_OF_USERS) {
-        // 1 or 0
-        abTest = Math.random() < 0.5 ? 'A' : 'B';
-        Cookies.set(cookieName, abTest);
-        await redis.incr('counter');
-      }
-
-      setVariant(abTest === 'A');
-    };
-
-    getAndSetVariant();
-  }, []);
-
-  return variant;
-};
-```
-
-
-```typescript
-import { renderHook, act } from '@testing-library/react-hooks';
-import Cookies from 'js-cookie';
-import Redis from 'ioredis';
-import useABTesting from './useABTesting';
-
-jest.mock('js-cookie');
-jest.mock('ioredis');
-
-describe('useABTesting', () => {
-  let getMock;
-  let incrMock;
-
-  beforeEach(() => {
-    getMock = jest.fn();
-    incrMock = jest.fn();
-
-    Redis.mockImplementation(() => {
-      return {
-        get: getMock,
-        incr: incrMock,
-      };
-    });
-  });
-
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
-  it('should set cookie for first 1000 users only', async () => {
-    Cookies.get.mockReturnValue(undefined);
-    Cookies.set.mockImplementation(() => {});
-
-    // Simulate 2000 users visiting the site
-    for (let i = 0; i < 2000; i++) {
-      getMock.mockResolvedValueOnce(i.toString());
-
-      await act(async () => {
-        renderHook(() => useABTesting('test'));
-      });
-    }
-
-    // Expect the cookie to have been set 1000 times
-    expect(Cookies.set).toHaveBeenCalledTimes(1000);
-  });
-});
-```
-
-
----
 layout: center
 ---
 
@@ -634,7 +542,7 @@ layout: center
 <img src="/cat-laptop.gif" class="w-78"  />
 
 <!--
-Now that we know a bit what a typical feature flag looks like, let's look at a real world demo with posthog
+Now that we know a bit what a typical feature flag looks like and how to use it without a third-party service, let's look at a real world demo with posthog
 -->
 
 ---
@@ -658,7 +566,7 @@ layout: center
 <img src="/posthog.png" class="w-350"  />
 
 <!--
-To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It also a generous free tier and other goodies that we're going to take a quick look at
+To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It also a generous free tier (about a million free requests a month or something like that) and other goodies that we're going to take a quick look at
 -->
 
 ---
@@ -823,8 +731,14 @@ clicks: 2
 <img src="/grand-opening.gif" class="w-158"  />
 </div>
 
+---
+--- 
+What about a/b testing?
+
+TODO: add example on how to do a/b testing with posthog
 
 ---
+
 
 Overrides ????
 
