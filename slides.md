@@ -66,8 +66,26 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
-I'm a developer, working at sky betting and gaming at the mo. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. I'm on the bird site too but I only use it to like pictures of cats so bewarned. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk. Today we're going to be talking about feature flags + a/b testing and why you might want to use them.
+I'm a dev, working at sky betting and gaming at the mo. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk.
 -->
+
+--- 
+clicks: 2
+layout: two-cols
+--- 
+
+
+<div v-click='1'>
+<img src='/simpsons-flag.gif' class='w-100' />
+</div>
+
+::right::
+
+<div v-click='2'>
+<img src='/a-or-b-simpsons.gif' class='w-100' />
+</div>
+
+<!-- Today we're going to be talking about feature flags + a/b testing and why you might want to use them. -->
 
 ---
 layout: center
@@ -118,7 +136,7 @@ layout: comparison
 clicks: 6
 ---
 
-## How do we deliver software
+## Software delivery
 
 <div v-click="1">
 <p>Feature / need</p> 
@@ -139,40 +157,71 @@ clicks: 6
 
 
 <div v-click="5">
-<p>release</p>
+<p>release to prod</p>
 </div>
 
 
 <div v-click="6">
-<p class='text-red'>What happens when something goes wrong at one of these stages?</p>
+<p class='text-red'>Kaboom 🧨 💣</p>
 </div>
 
 <!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day  
 -->
 
 ---
+layout: two-cols
+clicks: 1
+---
+## Feature flags 🤔 ???
 
-## What are feature flags?
-
-Light switch
-
-<img src="/homer-light-switch.gif" class="m-2" />
+<img src="/homer-light-switch.gif" class="m-2 w-70 h-70" />
 
 <!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off. They're usually paired with some sort of a/b test algorithm which will allow you to release your feature to small percentages of users. Typically with big features, you don't want to release a feature to 100% of your users, you want to slowly release to small percentages of users to test whether your feature is going to cause problems in production.
+feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off.
 -->
 
+
+::right::
+
+<div v-click='1'>
+
+```typescript
+const HomePage = () => {
+  const newFeature = false;
+
+
+  return newFeature ? <NewFeature /> : <OldFeature />;
+}
+```
+</div>
+
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 0.7rem;
+    --slidev-code-line-height: calc(0.7rem * 1.5);
+  }
+</style>
+
+
+--- 
+--- 
+# Feature flags 
+
+<img src="/ff-flow.png" class='w-350' />
+
+
+<!-- so this is the typical flow that happens with a feature flag. We have some new feature. We then have that controlled under a feature flag. If the feature flag is off, users see the old feature. if it's on, they see the new feature -->
+
+---
 ---
 
 # what is a/b testing?
 
 <img src="/ab-testing.png" class="w-150" />
 
-A/B testing is a way to expose users to two different versions of a feature to see which one performs better.
-
 <!--
-A/B tests are an experiment that usually involves two variants usually a control group and an experiment group. In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
+A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the old feature) and an experiment group (user has the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
 -->
 
 ---
@@ -182,7 +231,7 @@ A/B tests are an experiment that usually involves two variants usually a control
 <img src='/ff-ex.png' class='w-350' />
 
 <!--
-So as an example lets pretend that this table is 10% of my users and the rest of you folks are 90% of my users. This way I can slowly release my new feature to small groups of users to make sure it's safe to release to everyone in the room
+So as a quick example, this is the typical flow of a feature flag paired with a/b testing. Very similar to the last diagram. We have a new feature, if the feature flag is off, we show the existing functionality. If it's on, we show the new feature. But the difference is we then use an a/b test to control the amount of users that see this feature. So in this case 40% of our userbase sees the new functionality and 60% see the old functionality.
 -->
 
 ---
@@ -192,7 +241,7 @@ So as an example lets pretend that this table is 10% of my users and the rest of
 <img src='/amazon-recs.png' class='w-350' />
 
 <!--
-As a real world example, here are my amazon recommendations. You can see I'm getting some new show on prime video recommended to me along with fashion and some beauty products. I doubt this is how this works in real life but let's pretend. These cards could be controlled under a feature flag and an a/b test based on what the marketing department wants to do. Perhaps they are testing whether people click the mr and mrs smith card from the homepage to see if it boosts views. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might turn it off and find a new way to drive engagement. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
+As a real world example, here are my amazon recommendations. You can see I'm getting some new tv show on prime recommended to me along with some other cards. I doubt this is how this works in real life but let's pretend. The mr and mrs card could be controlled under a feature flag with an a/b test based on what the marketing department wants to do. The marketing department want to turn on the feature flag and manage the a/b test themselves. They might be testing whether people click the mr and mrs smith card from the homepage to see if the poster draws people in. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might try different posters to see what people like best. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
 -->
 
 ---
