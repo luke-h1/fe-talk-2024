@@ -23,6 +23,7 @@ title: Feature Flags (FE Sheffield May)
 
 #### Frontend Sheffield May 2024
 
+
 ---
 layout: two-cols
 ---
@@ -68,11 +69,10 @@ layout: two-cols
 I'm a dev, working at sky betting and gaming at the mo. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk.
 -->
 
---- 
+---
 clicks: 2
 layout: two-cols
---- 
-
+---
 
 <div v-click='1'>
 <h2>Feature Flags</h2>
@@ -86,7 +86,9 @@ layout: two-cols
 <img src='/a-or-b-simpsons.gif' class='w-100' />
 </div>
 
-<!-- Today we're going to be talking about feature flags + a/b testing and why you might want to use them in your projects -->
+<!--
+Today we're going to be talking about feature flags + a/b testing and why you might want to use them in your projects
+-->
 
 ---
 layout: center
@@ -167,13 +169,14 @@ clicks: 6
 </div>
 
 <!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day  
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
 -->
 
 ---
 layout: two-cols
 clicks: 1
 ---
+
 ## Feature flags 🤔 ???
 
 <img src="/homer-light-switch.gif" class="m-2 w-70 h-70" />
@@ -205,16 +208,16 @@ const HomePage = () => {
 </style>
 
 
---- 
---- 
+---
+
 # Feature flags 
 
 <img src="/ff-flow.png" class='w-350' />
 
+<!--
+so this is the typical flow that happens with a feature flag. We have some new feature. We then have that controlled under a feature flag. If the feature flag is off, users see the old feature. if it's on, they see the new feature
+-->
 
-<!-- so this is the typical flow that happens with a feature flag. We have some new feature. We then have that controlled under a feature flag. If the feature flag is off, users see the old feature. if it's on, they see the new feature -->
-
----
 ---
 
 # what is a/b testing?
@@ -604,6 +607,7 @@ clicks: 4
   <Star />Using a service such as LaunchDarkly or PostHog
 </div>
 
+
 ---
 layout: center
 ---
@@ -803,8 +807,9 @@ clicks: 2
 <img src="/grand-opening.gif" class="w-158"  />
 </div>
 
-<!-- And that it, we've now got a feature flag controlling the visibility of our blog page. If it's enabled we show our posts or we show a message teasing users to come back later -->
-
+<!--
+And that it, we've now got a feature flag controlling the visibility of our blog page. If it's enabled we show our posts or we show a message teasing users to come back later
+-->
 
 ---
 clicks: 2
@@ -815,7 +820,6 @@ What about a/b testing?
 <div v-click="1">
 <img src='/release-condition-1.png' class='w-100' />
 </div>
-
 
 <!--
 We just need to go back to our console in posthog and alter the release condition to the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
@@ -862,7 +866,9 @@ All we have to do is give it access to embed into our site. Since we've authoris
   <source src="/live-example.mp4" type="video/mp4" />
 </SlidevVideo>
 
-<!-- You can see we've got a little widget that allows to turn the feature flag on super easily. -->
+<!--
+You can see we've got a little widget that allows to turn the feature flag on super easily.
+-->
 
 ---
 
