@@ -76,16 +76,18 @@ layout: two-cols
 
 
 <div v-click='1'>
+<h2>Feature Flags</h2>
 <img src='/simpsons-flag.gif' class='w-100' />
 </div>
 
 ::right::
 
 <div v-click='2'>
+<h2>A/B testing</h2>
 <img src='/a-or-b-simpsons.gif' class='w-100' />
 </div>
 
-<!-- Today we're going to be talking about feature flags + a/b testing and why you might want to use them. -->
+<!-- Today we're going to be talking about feature flags + a/b testing and why you might want to use them in your projects -->
 
 ---
 layout: center
