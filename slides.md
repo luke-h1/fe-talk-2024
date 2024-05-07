@@ -226,7 +226,7 @@ A/B testing is a way to expose your users to two different versions of a feature
 
 ---
 
-## Quick example
+## a/b test flow
 
 <img src='/ff-ex.png' class='w-350' />
 
@@ -235,13 +235,15 @@ So as a quick example, this is the typical flow of a feature flag paired with a/
 -->
 
 ---
+layout: two-cols
+---
 
-## Quick example
+## a/b test example
 
-<img src='/amazon-recs.png' class='w-350' />
+<img src='/amazon-rec-1.png' class='w-350' />
 
 <!--
-As a real world example, here are my amazon recommendations. You can see I'm getting some new tv show on prime recommended to me along with some other cards. I doubt this is how this works in real life but let's pretend. The mr and mrs card could be controlled under a feature flag with an a/b test based on what the marketing department wants to do. The marketing department want to turn on the feature flag and manage the a/b test themselves. They might be testing whether people click the mr and mrs smith card from the homepage to see if the poster draws people in. If it boosts views, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might try different posters to see what people like best. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers
+As a real world example, I got this show recommended to me on Amazon.I doubt this is how this works in real life but let's pretend. The poster for this show could be controlled under a feature flag along with an a/b test based on what the marketing department wants to do. They might be testing whether people click the show from the homepage based on the poster. If lots of people click this image, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might try different posters to see what people like best. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers too much. Bear in mind it takes a bit of work to setup proper analytics and monitoring for this kind of thing, but once you've got that down, it's a great way to keep track of what your users like and don't about your site.
 -->
 
 ---
@@ -350,10 +352,8 @@ Percentage rollouts
 
 You can release your feature to a percentage of your users instead of everyone all at once
 
-todo - review this slide luke
-
 <!--
-We've touched on this a bit and this is what we'll be using a/b testing for. Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of determining how many users you have and is not so easily implemented. You can do some rough maths to implement your own a/b testing platform but it won't be 100% accurate (we'll get into that a bit later). That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws evidently things which instrument your application and determine how many users you have
+We've touched on this a bit already and this is what we'll be using a/b testing for. Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of determining how many users you have and is not so easily implemented. You can do some rough maths to implement your own a/b testing platform but it won't be 100% accurate (we'll get into that a bit later). That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws evidently things which instrument your application and determine how many users you have
 -->
 
 ---
