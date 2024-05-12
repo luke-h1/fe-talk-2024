@@ -183,12 +183,12 @@ clicks: 1
 
 ## Feature flags 🤔
 
-<img src="/homer-light-switch.gif" class="m-2 w-70 h-70" />
+<img src="/homer-light-switch.gif" class="w-100 h-100" />
 
 
 ::right::
 
-<div v-click='1'>
+<div v-click='1' class='mt-12'>
 
 ```typescript
 const HomePage = () => {
@@ -208,7 +208,7 @@ const HomePage = () => {
 </style>
 
 <!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off.
+feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another.
 -->
 
 ---
