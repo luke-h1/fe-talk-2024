@@ -38,7 +38,7 @@ layout: two-cols
     Software Developer at Sky Betting & Gaming.
     </p>
     <p>
-    Typescript, DevOps, anything frontend :) 
+    TypeScript, DevOps, anything frontend :) 
     </p>
   </div>
   
