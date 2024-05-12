@@ -2,6 +2,7 @@
   "name": "slidev",
   "private": true,
   "scripts": {
+    "clean": "rm -rf node_modules",
     "build": "slidev build",
     "dev": "slidev",
     "format": "slidev format",
@@ -26,5 +27,8 @@
     "shiki": "^0.14.1",
     "vite": "^4.2.1"
   },
-  "pnpm": {}
+  "pnpm": {},
+  "resolutions": {
+    "@vitejs/plugin-vue": "4.3.1"
+  }
 }
