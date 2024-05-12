@@ -169,7 +169,7 @@ clicks: 6
 </div>
 
 <!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. I'll try not to bore you, sure we all hear enough about agile and scrum practices at work. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
 -->
 
 ---
@@ -180,10 +180,6 @@ clicks: 1
 ## Feature flags 🤔 ???
 
 <img src="/homer-light-switch.gif" class="m-2 w-70 h-70" />
-
-<!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off.
--->
 
 
 ::right::
@@ -207,6 +203,9 @@ const HomePage = () => {
   }
 </style>
 
+<!--
+feature flags are a way to control the visibility of features in your app. They're a way to programatically features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get light we flip it again and the lightbuld goes off.
+-->
 
 ---
 
@@ -225,7 +224,7 @@ so this is the typical flow that happens with a feature flag. We have some new f
 <img src="/ab-testing.png" class="w-150" />
 
 <!--
-A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the old feature) and an experiment group (user has the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
+A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionallity) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
 -->
 
 ---
