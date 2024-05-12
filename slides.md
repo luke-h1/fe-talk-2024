@@ -475,8 +475,8 @@ const featureFlags: FeatureFlag[] = [
     description: 'new redesigned page',
     enabled: false,
     overrides: {
-    name: 'show-redesign-2024',
-    value: true,    
+      name: 'show-redesign-2024',
+      value: true,
   },
 },
 ];
@@ -520,10 +520,10 @@ file based feature flag implementation
 export const featureFlags: FeatureFlag[] = [
   {
     name: 'redesign-2024',
-    description: 'Redesigned page',
+    description: 'Redesigned page for 2024',
     enabled: false,
     overrides: {
-      name: 'redeisgn-2024',
+      name: 'redesign-2024',
       value: true,
     },
   },
