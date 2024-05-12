@@ -136,31 +136,31 @@ background on software delivery, quick explanation of feature flags and a/b test
 
 ---
 layout: comparison
-clicks: 6
+clicks: 7
 ---
 
 ## Software delivery
 
 <div v-click="1">
-<p>Feature / need</p> 
+<p class='text-green'>Feature / need ✅</p> 
 </div>
 
 <div v-click="2">
-<p>refine + estimate</p>
+<p class='text-green'>refine + estimate ✅</p>
 </div>
 
 <div v-click="3">
-<p>development happens</p>
+<p class='text-green'>development happens ✅</p>
 </div>
 
  
 <div v-click="4">
-<p>testing</p>
+<p class='text-green'>testing ✅</p>
 </div>
 
 
 <div v-click="5">
-<p>release to prod</p>
+<p class='text-green'>release to prod ✅</p>
 </div>
 
 
@@ -168,8 +168,12 @@ clicks: 6
 <p class='text-red'>Kaboom 🧨 💣</p>
 </div>
 
+<div v-click="7">
+<p class='text-red'>Slow 🐌</p>
+</div>
+
 <!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. This process works great alebit a little slow 90% of the time. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
 -->
 
 ---
