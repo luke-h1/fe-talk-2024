@@ -8,8 +8,6 @@ import {
 } from "shiki-processor";
 import type { HighlighterOptions } from "shiki";
 
-console.log("HI");
-
 import { createRequire } from "module";
 import { createRangeProcessor } from "shiki-processor";
 const require = createRequire(import.meta.url);
