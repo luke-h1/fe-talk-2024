@@ -611,11 +611,13 @@ clicks: 4
 </div>
 
 
+<!-- There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own api or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide -->
+
 ---
 layout: center
 ---
 
-# Real world example / a/b testing with posthog
+# Real world example
 
 <img src="/cat-laptop.gif" class="w-78"  />
 
