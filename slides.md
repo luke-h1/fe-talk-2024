@@ -415,7 +415,7 @@ layout: comparison
  <Star /> Risk mitigation 💰
 </div>
 <div v-click="7">
- <Star /> Roll out big features incrementally 🚀
+ <Star /> Roll out features incrementally 🚀
 </div>
 <div v-click="8">
  <Star /> Performance 🚦
@@ -423,7 +423,7 @@ layout: comparison
 </div>
 
 <!--
-Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of cash gets burned
+Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of cash gets burned. They can roll out features to small amounts  of users to see how it interacts with the bigger picture. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect the application as a whole. Performance: They can use feature flags to turn off features that are causing performance issues
 -->
 
 ---
