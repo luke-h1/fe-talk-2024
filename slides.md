@@ -181,7 +181,7 @@ layout: two-cols
 clicks: 1
 ---
 
-## Feature flags 🤔 ???
+## Feature flags 🤔
 
 <img src="/homer-light-switch.gif" class="m-2 w-70 h-70" />
 
@@ -386,7 +386,6 @@ layout: comparison
 
 ## Who uses them?
 
-
 <div class="flex items-center gap-8">
 <div v-click="1">
 <img src="/airbnb.png" class="m-1 w-20" />
@@ -412,14 +411,14 @@ layout: comparison
 <div class='mt-5'>
 
 <div v-click="6">
- <Star /> Risk mitigation 💰
-</div>
-<div v-click="7">
- <Star /> Roll out features incrementally 🚀
-</div>
-<div v-click="8">
- <Star /> Performance 🚦
-</div>
+  <Star /> Risk mitigation 💰
+  </div>
+  <div v-click="7">
+  <Star /> Percentage rollouts 👩‍🔬
+  </div>
+  <div v-click="8">
+  <Star /> Performance 🚀
+  </div>
 </div>
 
 <!--
