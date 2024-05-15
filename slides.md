@@ -221,7 +221,7 @@ Last but not least, we release to production and hope nothing blows up
 <img src='/error-graph.png' width='1500' height='1000' />
 
 <!--
-maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime and errors for our users.
+maybe the big feature that works fine in staging blows everything up when you deploy it to production and it ends up causing a load of errors and downtime for our users.
 -->
 
 ---
