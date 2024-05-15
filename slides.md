@@ -534,19 +534,20 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 -->
 
 ---
+---
 
 # Feature flag code patterns
 
-<!-- we're going to go over the two primary patterns for creating feature flags + a/b tests and then we're going to look at a quick demo on how it would be used in the real world. -->
+<!-- we're going to go over the two primary patterns for creating feature flags and  then we're going to look at a quick demo on how it would be used in the real world. We'll also touch a little on a/b testing with this as well -->
 
 <img src="/giphy.gif" class="w-78" />
 
 
+--- 
 ---
-
 ## General structure of a feature flag
 
-```ts{2|3|4|5|6,7,8|9}
+```ts{2|3|4|5|6,7,8,9}
 
 {
   "name": "new-feature",
@@ -560,22 +561,14 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 
 ```
 
+<!-- We've got some simple fields here, the feature name, a description, whether it's enabled and finally some way of overriding the feature flag (in this case we're using a cookie). I'm Not promising it'll be identical but this is generally the structure of a feature flag and is typically the response you'll see in a lot of feature flag providers -->
+
 
 ---
-clicks: 2
-layout: comparison
+layout: cover
 ---
 
-## Implementation
-
-::a:: 
-<div v-click="1">
-
-> Using a central file in your codebase to store your feature flags
-
-<br />
-<br />
-
+## Self hosted feature flags
 
 ```typescript
 // src/feature-flags.ts
@@ -591,39 +584,26 @@ const featureFlags: FeatureFlag[] = [
   },
 },
 ];
+
 export default featureFlags;
 ```
-</div>
 
-
-::b::
-
-<div v-click="2" class="mt-6">
-
-> Using a third party service such as posthog or your own feature flag API
-
-<br />
-
-```typescript
-// src/feature-flags.ts
-
-const MyComp = () => {
-  const newFeat = fetchFromService('new-feature');
-  return newFeat ? <NewFeat /> : <OldFeat />;
-};
-```
-</div>
+<style>
+  .slidev-layout {
+    --slidev-code-font-size: 1.25rem;
+    --slidev-code-line-height: calc(1.25rem * 1.4);
+  }
+</style>
 
 <!--
-Using a file in your codebase. Simple way of getting started with feature flags. We've got some simple fields here, the feature name, a description, whether it's enabled,some way of overriding the feature flag (in this case we're using a cookie)
+This is simply a central file that lives somewhere in your codebase. Simple and cheap way of getting started with feature flags. 
 -->
 
 ---
 layout: comparison
 ---
 
-file based feature flag implementation
-
+## Self hosted
 
 ```typescript
 // src/feature-flags.ts
@@ -641,13 +621,12 @@ export const featureFlags: FeatureFlag[] = [
 ];
 ```
 
-
+<!-- So let's implement it. We have only have one feature flag here. But you could have as many as you want in this array. We're gonna create a little hook to use this array in our components -->
 ---
 
-file based feature flag implementation
+## Self hosted
 
-
-```typescript{4|5|7,8,9|11|13,14|16}
+```typescript{2|4|5|7,8,9|11|13,14|16}
 // src/useFeatureFlag.ts
 import featureFlags from '@frontend/utils/featureFlags';
 
@@ -677,7 +656,7 @@ const useFeatureFlag = (name: string): boolean => {
 </style>
 
 <!--
-We import our array of feature flags and then try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. If we have found a flag, we try to look for a cookie based on the override object to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value matches what we set in the feature flag array earlier, we return true. Otherwise we return whatever the enable value of the feature flag is.
+So the first thing we do is import our array of feature flags. Next thing we do is accept a name as a param which will be the name of our feature flag. We try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. At this point we've found a feature flag. Our next job is to look for a cookie to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
 -->
 
 ---
@@ -701,12 +680,30 @@ layout: center
   }
 </style>
 
+<!-- and then this is how we use that hook. If newfeature is true we show the new functionality others we present the existing functionality -->
+
+--- 
+layout: center
+--- 
+
+## Using an SDK
+
+
+```typescript
+// src/feature-flags.ts
+const MyComp = () => {
+  const newFeat = fetchFromFeatureFlagApi('new-feature');
+  return newFeat ? <NewFeat /> : <OldFeat />;
+};
+```
+
+<!-- it's fairly simple setup with a feature flag provider. We just make an API call with the name of the feature flag we want to get and that will return us a boolean value indicating if the feature flag is enabled or not. There's a bit more setup to this in terms of setting up accounts and whatnot but we'll get into that shortly -->
 
 ---
 clicks: 4
 ---
 
-## a/b testing code patterns
+## A/B testing code patterns
 
 
 <div v-click="1">
@@ -718,7 +715,7 @@ clicks: 4
 </div>
 
 <!--
-There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own api or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide
+There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own API or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide
 -->
 
 ---
