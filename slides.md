@@ -130,56 +130,56 @@ clicks: 7
   </div>
 </div>
 
-
 <!--
 background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example
 -->
 
+---
 
-
---- 
---- 
 # Software delivery
 
-<!-- Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. -->
-
+<!--
+Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software.
+-->
 
 ---
---- 
+
 # Software delivery
 
 ## Feature / need
 
 <img src='/app.webp' width='500' />
 
+<!--
+We usually get a feature requested or a business need come thru
+-->
 
-<!--  We usually get a feature requested or a business need come thru -->
+---
 
-
---- 
---- 
 # Software delivery 
 
 ## Refine and estimate
 
 <img src='/refine.gif' width='500' />
 
-<!-- we then go over that work with a Business analyst or a project manager (business analyst) and estimate how much effort its going to take to implement -->
+<!--
+we then go over that work with a Business analyst or a project manager (business analyst) and estimate how much effort its going to take to implement
+-->
 
+---
 
---- 
---- 
 # Software delivery
 
 ## development happens
 
 <img src='/build-it.gif' width='500' />
 
+<!--
+We build the actual thing. We write the code, the unit tests and get people to review it.
+-->
 
-<!-- We build the actual thing. We write the code, the unit tests and get people to review it. -->
+---
 
---- 
---- 
 # Software delivery
 
 ### QA / testing happens
@@ -188,8 +188,9 @@ background on software delivery, quick explanation of feature flags and a/b test
 
 <img src='/inspect.gif' width='500' />
 
---- 
---- 
+
+---
+
 # Software delivery 
 
 ### Release
@@ -197,12 +198,12 @@ background on software delivery, quick explanation of feature flags and a/b test
 
 <img src='/deploy-it.gif' width='500' />
 
-<!-- Last but not least, we release to production and hope nothing blows up-->
+<!--
+Last but not least, we release to production and hope nothing blows up
+-->
 
+---
 
-
---- 
---- 
 # Software delivery 
 
 ### Kaboom ?? 🧨
@@ -210,8 +211,7 @@ background on software delivery, quick explanation of feature flags and a/b test
 <img src='/deploy-to-prod.gif' width='500' />
 
 
---- 
---- 
+---
 
 # Software delivery 
 
@@ -220,13 +220,11 @@ background on software delivery, quick explanation of feature flags and a/b test
 
 <img src='/error-graph.png' width='1500' height='1000' />
 
+<!--
+maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime and errors for our users.
+-->
 
-
-<!-- maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime and errors for our users. -->
-
-
---- 
---- 
+---
 
 # Software delivery
 
@@ -234,13 +232,15 @@ background on software delivery, quick explanation of feature flags and a/b test
 
 <img src='/backend.gif' />
 
-<!-- Or maybe it's a problem that's more subtle. Your backend development goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back -->
+<!--
+Or maybe it's a problem that's more subtle. Your backend development goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back
+-->
 
-
---- 
+---
 layout: two-cols
 clicks: 3
---- 
+---
+
 # Software delivery 
 
 ## Slow
@@ -264,34 +264,31 @@ Holidays
 </div>
 </div>
 
-<!-- and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix -->
+<!--
+and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix
+-->
 
+---
 
-
---- 
---- 
 # Software delivery
 
 ## Users
 
 <img src='/no-nice.gif' />
 
-<!-- and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast  -->
+<!--
+and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast
+-->
 
-
-
-
---- 
 ---
+
 # A better way
 
 <img src='/a-solution.gif' />
 
-
-
-<!-- Well this is where feature flags can help. They'll make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about -->
-
-
+<!--
+Well this is where feature flags can help. They'll make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
+-->
 
 ---
 layout: two-cols
@@ -723,8 +720,9 @@ clicks: 4
   <Star />Using a service such as LaunchDarkly or PostHog
 </div>
 
-
-<!-- There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own api or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide -->
+<!--
+There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own api or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide
+-->
 
 ---
 layout: center
