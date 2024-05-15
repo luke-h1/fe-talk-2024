@@ -277,7 +277,7 @@ and so how most of us deliver software can be quite vulnerable to these things. 
 <img src='/no-nice.gif' />
 
 <!--
-and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast
+and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast. Users are going to get frustrated and find another service that does what we do but better
 -->
 
 ---
