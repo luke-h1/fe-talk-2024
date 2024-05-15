@@ -534,7 +534,6 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 -->
 
 ---
----
 
 # Feature flag code patterns
 
@@ -543,8 +542,8 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 <img src="/giphy.gif" class="w-78" />
 
 
---- 
 ---
+
 ## General structure of a feature flag
 
 ```ts{2|3|4|5|6,7,8,9}
@@ -561,8 +560,9 @@ Feature flags are very prevelant in the industry. Just to name a few Airbnb, Git
 
 ```
 
-<!-- We've got some simple fields here, the feature name, a description, whether it's enabled and finally some way of overriding the feature flag (in this case we're using a cookie). I'm Not promising it'll be identical but this is generally the structure of a feature flag and is typically the response you'll see in a lot of feature flag providers -->
-
+<!--
+We've got some simple fields here, the feature name, a description, whether it's enabled and finally some way of overriding the feature flag (in this case we're using a cookie). I'm Not promising it'll be identical but this is generally the structure of a feature flag and is typically the response you'll see in a lot of feature flag providers
+-->
 
 ---
 layout: cover
@@ -596,7 +596,7 @@ export default featureFlags;
 </style>
 
 <!--
-This is simply a central file that lives somewhere in your codebase. Simple and cheap way of getting started with feature flags. 
+This is simply a central file that lives somewhere in your codebase. Simple and cheap way of getting started with feature flags.
 -->
 
 ---
@@ -621,7 +621,10 @@ export const featureFlags: FeatureFlag[] = [
 ];
 ```
 
-<!-- So let's implement it. We have only have one feature flag here. But you could have as many as you want in this array. We're gonna create a little hook to use this array in our components -->
+<!--
+So let's implement it. We have only have one feature flag here. But you could have as many as you want in this array. We're gonna create a little hook to use this array in our components
+-->
+
 ---
 
 ## Self hosted
@@ -659,6 +662,7 @@ const useFeatureFlag = (name: string): boolean => {
 So the first thing we do is import our array of feature flags. Next thing we do is accept a name as a param which will be the name of our feature flag. We try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. At this point we've found a feature flag. Our next job is to look for a cookie to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
 -->
 
+
 ---
 layout: center
 ---
@@ -680,11 +684,13 @@ layout: center
   }
 </style>
 
-<!-- and then this is how we use that hook. If newfeature is true we show the new functionality others we present the existing functionality -->
+<!--
+and then this is how we use that hook. If newfeature is true we show the new functionality others we present the existing functionality
+-->
 
---- 
+---
 layout: center
---- 
+---
 
 ## Using an SDK
 
@@ -697,7 +703,9 @@ const MyComp = () => {
 };
 ```
 
-<!-- it's fairly simple setup with a feature flag provider. We just make an API call with the name of the feature flag we want to get and that will return us a boolean value indicating if the feature flag is enabled or not. There's a bit more setup to this in terms of setting up accounts and whatnot but we'll get into that shortly -->
+<!--
+it's fairly simple setup with a feature flag provider. We just make an API call with the name of the feature flag we want to get and that will return us a boolean value indicating if the feature flag is enabled or not. There's a bit more setup to this in terms of setting up accounts and whatnot but we'll get into that shortly
+-->
 
 ---
 clicks: 4
