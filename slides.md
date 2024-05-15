@@ -38,7 +38,7 @@ layout: two-cols
     Software Developer at Sky Betting & Gaming.
     </p>
     <p>
-    TypeScript, DevOps, anything frontend :) 
+    TypeScript, DevOps, anything frontend :)
     </p>
   </div>
   
@@ -130,51 +130,168 @@ clicks: 7
   </div>
 </div>
 
+
 <!--
 background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example
 -->
 
+
+
+--- 
+--- 
+# Software delivery
+
+<!-- Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. -->
+
+
 ---
-layout: comparison
-clicks: 7
+--- 
+# Software delivery
+
+## Feature / need
+
+<img src='/app.webp' width='500' />
+
+
+<!--  We usually get a feature requested or a business need come thru -->
+
+
+--- 
+--- 
+# Software delivery 
+
+## Refine and estimate
+
+<img src='/refine.gif' width='500' />
+
+<!-- we then go over that work with a Business analyst or a project manager (business analyst) and estimate how much effort its going to take to implement -->
+
+
+--- 
+--- 
+# Software delivery
+
+## development happens
+
+<img src='/build-it.gif' width='500' />
+
+
+<!-- We build the actual thing. We write the code, the unit tests and get people to review it. -->
+
+--- 
+--- 
+# Software delivery
+
+### QA / testing happens
+
+<!-- Once we've built the thing, QA engineers get involved. We usually deploy the feature to staging and then the testers make sure we developers haven't done anything stupid. -->
+
+<img src='/inspect.gif' width='500' />
+
+--- 
+--- 
+# Software delivery 
+
+### Release
+
+
+<img src='/deploy-it.gif' width='500' />
+
+<!-- Last but not least, we release to production and hope nothing blows up-->
+
+
+
+--- 
+--- 
+# Software delivery 
+
+### Kaboom ?? 🧨
+
+<img src='/deploy-to-prod.gif' width='500' />
+
+
+--- 
+--- 
+
+# Software delivery 
+
+
+### Panic
+
+<img src='/error-graph.png' width='1500' height='1000' />
+
+
+
+<!-- maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime and errors for our users. -->
+
+
+--- 
+--- 
+
+# Software delivery
+
+## Holidays 🏖  😎️
+
+<img src='/backend.gif' />
+
+<!-- Or maybe it's a problem that's more subtle. Your backend development goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back -->
+
+
+--- 
+layout: two-cols
+clicks: 3
+--- 
+# Software delivery 
+
+## Slow
+
+
+<img src='/slow.gif' width='450' />
+
+
+::right::
+<div class='mt-50'>
+<div v-click='1'>
+ <Star />
+Holidays
+</div>
+<div v-click='2'>
+ <Star />
+ Differences in environments
+</div>
+<div v-click='3'>
+ <Star /> Performance 
+</div>
+</div>
+
+<!-- and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix -->
+
+
+
+--- 
+--- 
+# Software delivery
+
+## Users
+
+<img src='/no-nice.gif' />
+
+<!-- and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast  -->
+
+
+
+
+--- 
 ---
+# A better way
 
-## Software delivery
-
-<div v-click="1">
-<p class='text-green'>Feature / need ✅</p> 
-</div>
-
-<div v-click="2">
-<p class='text-green'>refine + estimate ✅</p>
-</div>
-
-<div v-click="3">
-<p class='text-green'>development happens ✅</p>
-</div>
-
- 
-<div v-click="4">
-<p class='text-green'>testing ✅</p>
-</div>
+<img src='/a-solution.gif' />
 
 
-<div v-click="5">
-<p class='text-green'>release to prod ✅</p>
-</div>
+
+<!-- Well this is where feature flags can help. They'll make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about -->
 
 
-<div v-click="6">
-<p class='text-red'>Kaboom 🧨 💣</p>
-</div>
-
-<div v-click="7">
-<p class='text-red'>Slow 🐌</p>
-</div>
-
-<!--
-Before we get into feature flags and why they're great, I wanted to talk a little bit on how most of us deliver software. We usually get a feature requested or a business need come thru, we then refine that with a BA or a project manager (business analyst), development happens, QA gets involved make sure its ok and then we release it. This process works great alebit a little slow 90% of the time. But what happens when things go wrong or we need to move faster. Perhaps your backend dev goes on holiday for 3 weeks and all your frontend is work is ready to go but you haven't got any api endpoints to hit. Or maybe the big feature that works fine in staging blows everything up when you deploy it to production and causes downtime for everyone. Well this is where feature flags can help you out and take a lot of stress out of everyone's day
--->
 
 ---
 layout: two-cols
@@ -208,7 +325,7 @@ const HomePage = () => {
 </style>
 
 <!--
-feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another.
+Just wondering, who has heard of a featuer flag before? Who's used them in production? Feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another.
 -->
 
 ---
