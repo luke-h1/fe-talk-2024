@@ -287,7 +287,7 @@ and most importantly this isn't a great experience for users. If we have problem
 <img src='/a-solution.gif' />
 
 <!--
-Well this is where feature flags can help. They'll make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
+Well this is where feature flags can help. They make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
 -->
 
 ---
@@ -359,6 +359,8 @@ So as a quick example, this is the typical flow of a feature flag paired with a/
 layout: two-cols
 ---
 
+#### TODO: break down this slide or restructure it
+
 ## a/b test example
 
 <img src='/amazon-rec-1.png' class='w-350' />
@@ -400,7 +402,7 @@ A/B testing
 </div>
 
 <!--
-Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with releasing to a small subsets of users to test whether user's like the first design or the last design
+Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with releasing to a small subsets of users with a/b testing to assert whether user's like the first design or the last design
 -->
 
 ---
@@ -441,24 +443,19 @@ Staff / internal releases
 
 <div v-click="1">
 
-```typescript 
-
-window.cookie = 'new-button-feature=true'
-
-```
+<img src='/cookie-1.png' />
 </div>
 
 ::b::
 
 <div v-click="2">
 
-```typescript 
- https://my-awesome-site.com?new-button-feature=true
-```
+<img src='/url-param.png' />
+
 </div>
 
 <!--
-This is one of my favorite things to do with feature flags. Most feature flag providers have a way of overriding a disabled feature flag. So you can release your work to production under a disabled feature flag and use something such as a query parameter or a cookie to allow QA engineers, stakeholders etc. view the work in production without the rest of your users seeing it
+This is one of my favorite things to do with feature flags. Feature flag can be overriden. This means we  can release our work to production under a disabled feature flag and use something such as cookie or a query parameter to let our stakeholders or engineers to take a look at the work without us releasing it to the public. This fixes the issue of having nightmares in production when something acts completely different. Safety net
 -->
 
 ---
@@ -474,7 +471,7 @@ Percentage rollouts
 You can release your feature to a percentage of your users instead of everyone all at once
 
 <!--
-We've touched on this a bit already and this is what we'll be using a/b testing for. Instead of activating a feature for all users at once, we can activate features in segments to a growing percentage of users. We might decide to roll a feature out in 25% increments or we may be a bit more risk averse and only release to 5% of users at a time to see if something goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%. This requires some sophisticated management of determining how many users you have and is not so easily implemented. You can do some rough maths to implement your own a/b testing platform but it won't be 100% accurate (we'll get into that a bit later). That's why it's best to rely on an established feature flag service such as LaunchDarkly, aws evidently things which instrument your application and determine how many users you have
+We've touched on this a bit already and this is what we'll be using a/b testing for. Instead of activating a feature for all users at once, we can activate features in small percentages We might decide to first release to only 25% of users and then keep an eye on our monitoring and analytics to see if anything goes wrong. This works on spliting your user base into different cohorts - one with the feature flag enabled 25% and one with the feature flag disabled 75%.
 -->
 
 ---
@@ -490,7 +487,7 @@ Segmented rollouts
 Admins, Moderators, certain teams etc.
 
 <!--
-Similar to percentage based rollouts but we are exposing features to users with specific attributes.This could be something such as only releasing to admins, paid users, users in a certain region etc.
+Similar to percentage based rollouts but we are exposing features to users with specific attributes.This could be something like only releasing to paid users, only users in a certain region and things like that
 -->
 
 ---
