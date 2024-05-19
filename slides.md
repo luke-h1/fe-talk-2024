@@ -870,7 +870,7 @@ Toolbar
 </div>
 
 <!--
-in posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website.
+In posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website.
 -->
 
 ---
