@@ -883,6 +883,10 @@ In posthog we have this thing called the toolbar. The toolbar is a little widget
 All we have to do is give it access to embed into our site. Since we've authorised it for localhost, let's visit our client's website and see what shows up
 -->
 
+---
+---
+
+TODO: reshoot this
 
 <SlidevVideo  controls>
   <source src="/live-example.mp4" type="video/mp4" />
