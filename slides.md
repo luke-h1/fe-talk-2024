@@ -161,7 +161,7 @@ We usually get a feature requested or a business need come thru
 <img src='/refine.gif' width='500' />
 
 <!--
-We then go over that work with someone like Business analyst to estimate how much effort its going to take to implement
+We then go over that work with someone like a Business analyst to estimate how much effort its going to take to implement
 -->
 
 ---
