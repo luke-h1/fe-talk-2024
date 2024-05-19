@@ -835,7 +835,7 @@ And that it, we've now got a feature flag controlling the visibility of our blog
 -->
 
 ---
-clicks: 2
+clicks: 1
 ---
 
 What about a/b testing?
