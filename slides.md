@@ -135,7 +135,7 @@ background on software delivery, quick explanation of feature flags and a/b test
 -->
 
 ---
----
+
 # Software delivery
 
 <!--
@@ -143,7 +143,7 @@ Before we get into feature flags and why they're great, I wanted to talk a littl
 -->
 
 ---
----
+
 # Software delivery
 
 ## Feature / need
@@ -155,7 +155,7 @@ We usually get a feature requested or a business need come thru
 -->
 
 ---
----
+
 # Software delivery 
 
 ## Refine and estimate
@@ -167,7 +167,7 @@ we then go over that work with a Business analyst or a project manager (business
 -->
 
 ---
----
+
 # Software delivery
 
 ## development happens
@@ -178,8 +178,8 @@ we then go over that work with a Business analyst or a project manager (business
 We build the actual thing. We write the code, the unit tests and get people to review it.
 -->
 
---- 
 ---
+
 # Software delivery
 
 ### QA / testing happens
@@ -187,10 +187,12 @@ We build the actual thing. We write the code, the unit tests and get people to r
 
 <img src='/inspect.gif' width='500' />
 
-<!-- Once we've built the thing, QA engineers get involved. We usually deploy the feature to staging and then the testers make sure we developers haven't done anything stupid. -->
+<!--
+Once we've built the thing, QA engineers get involved. We usually deploy the feature to staging and then the testers make sure we developers haven't done anything stupid.
+-->
 
 ---
----
+
 # Software delivery 
 
 ### Release
@@ -202,17 +204,17 @@ We build the actual thing. We write the code, the unit tests and get people to r
 Last but not least, we release to production and hope nothing blows up
 -->
 
+---
 
----
----
 # Software delivery 
 
 ### Kaboom ?? 🧨
 
 <img src='/deploy-to-prod.gif' width='500' />
 
+
 ---
----
+
 # Software delivery 
 
 
@@ -225,7 +227,6 @@ maybe the big feature that works fine in staging blows everything up when you de
 -->
 
 ---
----
 
 # Software delivery
 
@@ -234,7 +235,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 <img src='/backend.gif' />
 
 <!--
-Or maybe it's a problem that's more subtle. Your backend development goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back
+Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back
 -->
 
 ---
@@ -266,7 +267,7 @@ Holidays
 </div>
 
 <!--
-and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix
+and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, or we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix
 -->
 
 ---
@@ -278,7 +279,7 @@ and so how most of us deliver software can be quite vulnerable to these things. 
 <img src='/no-nice.gif' />
 
 <!--
-and most importantly this isn't a great experience for users. If we have problems in production or we can't delivery fast. Users are going to get frustrated and find another service that does what we do but better
+and most importantly this isn't a great experience for users. Our users are going to get frustrated and find another service that does what we do but better
 -->
 
 ---
@@ -288,7 +289,7 @@ and most importantly this isn't a great experience for users. If we have problem
 <img src='/a-solution.gif' />
 
 <!--
-Well this is where feature flags can help. They make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
+And this is where feature flags can help. They make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
 -->
 
 ---
@@ -323,7 +324,7 @@ const HomePage = () => {
 </style>
 
 <!--
-Just wondering, who has heard of a featuer flag before? Who's used them in production? Feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another.
+Feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another. So here we have a boolean `newFeature`. If it's true, we render the new component, otherwise we render the old component. That's all there is to it
 -->
 
 ---
