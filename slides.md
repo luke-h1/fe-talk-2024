@@ -66,7 +66,7 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
-I'm a dev, working at sky betting and gaming at the mo. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk.
+Hiya, I'm Luke. I'm a software dev at the mo, currently at sky bet. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk.
 -->
 
 ---
@@ -131,11 +131,11 @@ clicks: 7
 </div>
 
 <!--
-background on software delivery, quick explanation of feature flags and a/b tests, who uses them, general code patterns and how to structure flags and a/b tests in your project and we're gonna finish off with a real world example
+background on software delivery, quick explanation of feature flags and a/b tests, why you might want to use them, who uses them, how to structure feature flags and a/b tests in your project and then we're gonna finish off with a real world example
 -->
 
 ---
-
+---
 # Software delivery
 
 <!--
@@ -143,7 +143,7 @@ Before we get into feature flags and why they're great, I wanted to talk a littl
 -->
 
 ---
-
+---
 # Software delivery
 
 ## Feature / need
@@ -155,7 +155,7 @@ We usually get a feature requested or a business need come thru
 -->
 
 ---
-
+---
 # Software delivery 
 
 ## Refine and estimate
@@ -167,7 +167,7 @@ we then go over that work with a Business analyst or a project manager (business
 -->
 
 ---
-
+---
 # Software delivery
 
 ## development happens
@@ -178,19 +178,19 @@ we then go over that work with a Business analyst or a project manager (business
 We build the actual thing. We write the code, the unit tests and get people to review it.
 -->
 
+--- 
 ---
-
 # Software delivery
 
 ### QA / testing happens
 
-<!-- Once we've built the thing, QA engineers get involved. We usually deploy the feature to staging and then the testers make sure we developers haven't done anything stupid. -->
 
 <img src='/inspect.gif' width='500' />
 
+<!-- Once we've built the thing, QA engineers get involved. We usually deploy the feature to staging and then the testers make sure we developers haven't done anything stupid. -->
 
 ---
-
+---
 # Software delivery 
 
 ### Release
@@ -202,17 +202,17 @@ We build the actual thing. We write the code, the unit tests and get people to r
 Last but not least, we release to production and hope nothing blows up
 -->
 
----
 
+---
+---
 # Software delivery 
 
 ### Kaboom ?? 🧨
 
 <img src='/deploy-to-prod.gif' width='500' />
 
-
 ---
-
+---
 # Software delivery 
 
 
@@ -224,6 +224,7 @@ Last but not least, we release to production and hope nothing blows up
 maybe the big feature that works fine in staging blows everything up when you deploy it to production and it ends up causing a load of errors and downtime for our users.
 -->
 
+---
 ---
 
 # Software delivery
@@ -723,7 +724,7 @@ clicks: 4
 </div>
 
 <!--
-There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own API or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog but there is a self-hosted example that I've built which you'll be able to view at the last slide
+There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own API or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog for a/b tests but there is a self-hosted example that I've built which you'll be able to view at the last slide.
 -->
 
 ---
