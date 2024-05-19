@@ -168,7 +168,7 @@ We then go over that work with someone like a Business analyst to estimate how m
 ---
 # Software delivery
 
-## development happens
+## Development happens
 
 <img src='/build-it.gif' width='500' />
 
