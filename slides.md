@@ -856,7 +856,7 @@ Overrides?
 <img src='/hmm.gif' class='w-100' />
 
 <!--
-And last but not least overrides. So we've delivered our feature, the client is happy, we have our feature and a/b test all working, but our client wants to check it out and make sure everything is to there on production. Like we mentioned before a little earlier in the talk, this isn't a problem.
+And last but not least overrides. So we've delivered our feature, client is happy, we have our feature and a/b test all working, but our client wants to check it out and make sure everything is to their liking on production before they release it. Like we mentioned before a little earlier in the talk, this isn't a problem.
 -->
 
 ---
