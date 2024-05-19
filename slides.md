@@ -19,11 +19,9 @@ title: Feature Flags (FE Sheffield May)
 
 # Feature Flags
 
-<p class='mb-6 text-pink'> A safer way of releasing software
-</p>
+<p class='mb-6 text-pink'>A safer way of releasing software</p>
 
 #### Frontend Sheffield May 2024
-
 
 ---
 layout: two-cols
