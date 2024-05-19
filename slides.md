@@ -358,20 +358,6 @@ So as a quick example, this is the typical flow of a feature flag paired with a/
 -->
 
 ---
-layout: two-cols
----
-
-#### TODO: break down this slide or restructure it
-
-## a/b test example
-
-<img src='/amazon-rec-1.png' class='w-350' />
-
-<!--
-As a real world example, I got this show recommended to me on Amazon.I doubt this is how this works in real life but let's pretend. The poster for this show could be controlled under a feature flag along with an a/b test based on what the marketing department wants to do. They might be testing whether people click the show from the homepage based on the poster. If lots of people click this image, they might keep that feature flag turned on and release this to 100% of users. Otherwise they might try different posters to see what people like best. This way they're able to dynamically control what content a user sees or doesn't see while not having to talk to developers too much. Bear in mind it takes a bit of work to setup proper analytics and monitoring for this kind of thing, but once you've got that down, it's a great way to keep track of what your users like and don't about your site.
--->
-
----
 
 ## Benefits
 
@@ -493,46 +479,30 @@ Similar to percentage based rollouts but we are exposing features to users with 
 -->
 
 ---
-clicks: 8
 layout: comparison
 ---
 
 ## Who uses them?
 
-<div class="flex items-center gap-8">
-<div v-click="1">
-<img src="/airbnb.png" class="m-1 w-20" />
+<div class="gap-8 flex items-center flex-row justify-center">
+  <img src="/airbnb.png" class="m-1 w-20" />
+  <img src="/netflix.svg" class="m-1 w-20" />
+  <img src="/gh.png" class="m-1 w-20" />
+  <img src='/google.png' class="m-1 w-20" />
+  <img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
 </div>
 
-<div v-click="2">
-<img src="/netflix.svg" class="m-1 w-20" />
-</div>
-
-<div v-click="3">
-<img src="/gh.png" class="m-1 w-20" />
-</div>
-
-<div v-click="4">
-<img src='/google.png' class="m-1 w-20" />
-</div>
-
-<div v-click="5">
-<img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
-</div>
-</div>
-
-<div class='mt-5'>
-
-<div v-click="6">
-  <Star /> Risk mitigation 💰
-  </div>
-  <div v-click="7">
-  <Star /> Small rollouts 👩‍🔬
-  </div>
-</div>
+<ul class='mt-8'>
+<li>
+   Risk mitigation 💰
+</li>
+<li>
+   Small rollouts 👩‍🔬
+</li>
+</ul>
 
 <!--
-Feature flags are very prevelant in the industry. Just to name a few Airbnb, GitHub, Netflix. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of money gets lost and most importantly people's trust in a product. They can roll out features to small amounts of users to see how it interacts with the bigger picture. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect their application as a whole. That's why using feature flags is a no brainer for them.
+Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all the big dogs. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of money gets lost and most importantly people's trust in a product. They can roll out features to small amounts of users to see how it interacts with the bigger picture. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect their application as a whole. That's why using feature flags is a no brainer for them.
 -->
 
 ---
