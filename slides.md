@@ -14,6 +14,7 @@ drawings:
 transition: slide-left
 css: unocss
 title: Feature Flags (FE Sheffield May)
+ 
 ---
 
 # Feature Flags
@@ -98,42 +99,41 @@ clicks: 7
 ## Topics
 
 
-<!-- align to left -->
 <div class='text-left'>
-
-<div v-click="1">
- <Star /> Software delivery 🚚
-</div>
-
-<div v-click="2">
- <Star /> What are feature flags ⛳️
-</div>
-
-<div v-click="3">
- <Star /> What is a/b testing 🧪
-</div>
-
-<div v-click="4">
- <Star /> Benefits 🎉
- </div>
-
-<div v-click="5">
- <Star /> Industry usage 🏢
-</div>
-
-<div v-click="6">
- <Star /> Code patterns 🧑‍💻
- </div>
-
- <div v-click="7">
-  <Star /> Real world example 🌍
+  <div v-click="1">
+  <Star /> Software delivery 🚚
   </div>
+
+  <div v-click="2">
+  <Star /> What are feature flags ⛳️
+  </div>
+
+  <div v-click="3">
+  <Star /> What is a/b testing 🧪
+  </div>
+
+  <div v-click="4">
+  <Star /> Benefits 🎉
+  </div>
+
+  <div v-click="5">
+  <Star /> Industry usage 🏢
+  </div>
+
+  <div v-click="6">
+  <Star /> Code patterns 🧑‍💻
+  </div>
+
+  <div v-click="7">
+    <Star /> Real world example 🌍
+    </div>
 </div>
 
 <!--
 background on software delivery, quick explanation of feature flags and a/b tests, why you might want to use them, who uses them, how to structure feature flags and a/b tests in your project and then we're gonna finish off with a real world example
 -->
 
+---
 ---
 
 # Software delivery
@@ -143,7 +143,7 @@ Before we get into feature flags and why they're great, I wanted to talk a littl
 -->
 
 ---
-
+---
 # Software delivery
 
 ## Feature / need
@@ -155,7 +155,7 @@ We usually get a feature requested or a business need come thru
 -->
 
 ---
-
+---
 # Software delivery 
 
 ## Refine and estimate
@@ -167,7 +167,7 @@ we then go over that work with a Business analyst or a project manager (business
 -->
 
 ---
-
+---
 # Software delivery
 
 ## development happens
@@ -179,7 +179,7 @@ We build the actual thing. We write the code, the unit tests and get people to r
 -->
 
 ---
-
+---
 # Software delivery
 
 ### QA / testing happens
@@ -192,7 +192,7 @@ Once we've built the thing, QA engineers get involved. We usually deploy the fea
 -->
 
 ---
-
+---
 # Software delivery 
 
 ### Release
@@ -205,7 +205,7 @@ Last but not least, we release to production and hope nothing blows up
 -->
 
 ---
-
+---
 # Software delivery 
 
 ### Kaboom ?? 🧨
@@ -214,7 +214,7 @@ Last but not least, we release to production and hope nothing blows up
 
 
 ---
-
+---
 # Software delivery 
 
 
@@ -227,7 +227,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 -->
 
 ---
-
+---
 # Software delivery
 
 ## Holidays 🏖  😎️
@@ -253,17 +253,17 @@ clicks: 3
 
 ::right::
 <div class='mt-50'>
-<div v-click='1'>
- <Star />
-Holidays
-</div>
-<div v-click='2'>
- <Star />
- Differences in environments
-</div>
-<div v-click='3'>
- <Star /> Performance 
-</div>
+  <div v-click='1'>
+  <Star />
+  Holidays
+  </div>
+  <div v-click='2'>
+  <Star />
+  Differences in environments
+  </div>
+  <div v-click='3'>
+  <Star /> Performance 
+  </div>
 </div>
 
 <!--
@@ -271,7 +271,7 @@ and so how most of us deliver software can be quite vulnerable to these things. 
 -->
 
 ---
-
+---
 # Software delivery
 
 ## Users
@@ -283,7 +283,7 @@ and most importantly this isn't a great experience for users. Our users are goin
 -->
 
 ---
-
+---
 # A better way
 
 <img src='/a-solution.gif' />
@@ -328,7 +328,7 @@ Feature flags are a way to control the visibility of features in your app. They'
 -->
 
 ---
-
+---
 # Feature flags 
 
 <img src="/ff-flow.png" class='w-350' />
@@ -338,7 +338,7 @@ so this is the typical flow that happens with a feature flag. We have some new f
 -->
 
 ---
-
+---
 # what is a/b testing?
 
 <img src="/ab-testing.png" class="w-150" />
@@ -347,6 +347,7 @@ so this is the typical flow that happens with a feature flag. We have some new f
 A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionallity) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
 -->
 
+---
 ---
 
 ## a/b test flow
@@ -358,7 +359,7 @@ So as a quick example, this is the typical flow of a feature flag paired with a/
 -->
 
 ---
-
+---
 ## Benefits
 
 <img src="/fargo.gif" class="m-2 w-100" />
@@ -502,21 +503,30 @@ layout: comparison
 </ul>
 
 <!--
-Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all the big dogs. Risk Mitigation: It helps them reduce risk and saves them lots of money. For a lot of these companies 10 - 15 minutes of service disruption means lots of money gets lost and most importantly people's trust in a product. They can roll out features to small amounts of users to see how it interacts with the bigger picture. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect their application as a whole. That's why using feature flags is a no brainer for them.
+Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all the big dogs. It helps them reduce risk and saves them lots of money. For a lot of these companies 1 - 2 minutes of service disruption means lots of money gets lost and most importantly people's trust in a product. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect their application as a whole. That's why using feature flags paired with a/b tests is a no brainer for them.
 -->
 
+---
+clicks: 2
 ---
 
 # Feature flag code patterns
 
-<!-- we're going to go over the two primary patterns for creating feature flags and  then we're going to look at a quick demo on how it would be used in the real world. We'll also touch a little on a/b testing with this as well -->
+<!-- Now that we're all a bit familiar with feature flags, we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how it would be used in the real world. We'll also touch a little on a/b testing with this as well. These two patterns are building it yourself or using a platform like launchdarkly or posthog. -->
 
-<img src="/giphy.gif" class="w-78" />
+<div v-click="1">
+  <Star /> Self hosted
+</div>
+
+<div v-click="2">
+  <Star />Using an SDK/service such as LaunchDarkly or PostHog
+</div>
+
 
 
 ---
-
-## General structure of a feature flag
+---
+## self hosted feature flag
 
 ```ts{2|3|4|5|6,7,8,9}
 
@@ -525,50 +535,15 @@ Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all t
   "description": "A new feature",
   "enabled": true,
    "overides": {
-    "cookie": "new-feature",
-    "value": "true"
+     "cookie": "new-feature",
+     "value": "true"
    },
 }
 
 ```
 
 <!--
-We've got some simple fields here, the feature name, a description, whether it's enabled and finally some way of overriding the feature flag (in this case we're using a cookie). I'm Not promising it'll be identical but this is generally the structure of a feature flag and is typically the response you'll see in a lot of feature flag providers
--->
-
----
-layout: cover
----
-
-## Self hosted feature flags
-
-```typescript
-// src/feature-flags.ts
-
-const featureFlags: FeatureFlag[] = [
-  {
-    name: 'redesign-2024',
-    description: 'new redesigned page',
-    enabled: false,
-    overrides: {
-      name: 'show-redesign-2024',
-      value: true,
-  },
-},
-];
-
-export default featureFlags;
-```
-
-<style>
-  .slidev-layout {
-    --slidev-code-font-size: 1.25rem;
-    --slidev-code-line-height: calc(1.25rem * 1.4);
-  }
-</style>
-
-<!--
-This is simply a central file that lives somewhere in your codebase. Simple and cheap way of getting started with feature flags.
+Let's start by thinking about what we want to store. We want a name, some metadata about what it's used for, whether it's enabled and finally some way of manually enabling the feature flag (in this case a cookie).
 -->
 
 ---
@@ -594,11 +569,11 @@ export const featureFlags: FeatureFlag[] = [
 ```
 
 <!--
-So let's implement it. We have only have one feature flag here. But you could have as many as you want in this array. We're gonna create a little hook to use this array in our components
+To emphaize this a bit more, this is just a central file that lives somewhere in your codebase we're not going to be making any api calls or anything like that. We have only have one feature flag here, but you could have as many as you want in this array.
 -->
 
 ---
-
+---
 ## Self hosted
 
 ```typescript{2|4|5|7,8,9|11|13,14|16}
@@ -620,7 +595,6 @@ const useFeatureFlag = (name: string): boolean => {
   return featureFlag.enabled || isCookieOverrideSet;
 };
 
-
 ```
 
 <style>
@@ -631,8 +605,7 @@ const useFeatureFlag = (name: string): boolean => {
 </style>
 
 <!--
-So the first thing we do is import our array of feature flags. Next thing we do is accept a name as a param which will be the name of our feature flag. We try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. At this point we've found a feature flag. Our next job is to look for a cookie to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
--->
+And we're gonna create a little hook to use this file in our components. So the first thing we do is import our array of feature flags. Next thing we do is accept a name as a param which will be the name of our feature flag. We try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. At this point we've found a feature flag. Our next job is to look for a cookie to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
 
 
 ---
@@ -657,45 +630,7 @@ layout: center
 </style>
 
 <!--
-and then this is how we use that hook. If newfeature is true we show the new functionality others we present the existing functionality
--->
-
----
-layout: center
----
-
-## Using an SDK
-
-
-```typescript
-// src/feature-flags.ts
-const MyComp = () => {
-  const newFeat = fetchFromFeatureFlagApi('new-feature');
-  return newFeat ? <NewFeat /> : <OldFeat />;
-};
-```
-
-<!--
-it's fairly simple setup with a feature flag provider. We just make an API call with the name of the feature flag we want to get and that will return us a boolean value indicating if the feature flag is enabled or not. There's a bit more setup to this in terms of setting up accounts and whatnot but we'll get into that shortly
--->
-
----
-clicks: 4
----
-
-## A/B testing code patterns
-
-
-<div v-click="1">
-  <Star /> Self hosted
-</div>
-
-<div v-click="2">
-  <Star />Using a service such as LaunchDarkly or PostHog
-</div>
-
-<!--
-There are two ways that you can build a/b tests into your app. Either self-hosting it by building your own API or using a service such as launchdarkly or posthog. For times sake we're going to be looking at using posthog for a/b tests but there is a self-hosted example that I've built which you'll be able to view at the last slide.
+And then this is how we use that hook. If `newfeature` is true we show the new functionality others we present the existing functionality
 -->
 
 ---
@@ -707,7 +642,19 @@ layout: center
 <img src="/cat-laptop.gif" class="w-78"  />
 
 <!--
-Now that we know a bit what typical feature flags and a/b tests looks like and how to use it, let's look at a real world demo with posthog
+Now that we know a bit what typical feature flags and a/b tests looks like and how to use it, let's look at a real world demo using an SDK.
+-->
+
+---
+layout: center
+---
+
+## Posthog
+
+<img src="/posthog.png" class="w-350"  />
+
+<!--
+To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. it's got generous free tier and other goodies that we're going to take a quick look at
 -->
 
 ---
@@ -723,23 +670,10 @@ We have a problem. Our client wants to make a grand reveal of their new blog fea
 -->
 
 ---
-layout: center
 ---
-
-## Posthog
-
-<img src="/posthog.png" class="w-350"  />
-
-<!--
-To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. It's a generous free tier (about a million free requests a month or something like that) and other goodies that we're going to take a quick look at
--->
-
----
-
 ## Creating a feature flag
 
 <!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name, and what users we want to release to. This is caleld a release condition in posthog and we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
-
 
 <img src="/create-posthog.png" class="w-350"  />
 
@@ -826,7 +760,7 @@ NEXT_PUBLIC_POSTHOG_HOST="your-region"
 
 
 ---
-
+---
 ## Adding feature flags
 
 ```typescript{1|4|6,7,8,9,10,11,12,13,14|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34}
@@ -883,8 +817,7 @@ layout: comparison
 clicks: 2
 ---
 
-## Result 
-
+## Result
 
 ::a:: 
 
@@ -916,7 +849,7 @@ We just need to go back to our console in posthog and alter the release conditio
 -->
 
 ---
-
+---
 Overrides?
 
 
@@ -941,7 +874,7 @@ in posthog we have this thing called the toolbar. The toolbar is a little widget
 -->
 
 ---
-
+---
 <div class='mt-15'>
 <img src="/auth-urls.png" class='w-750' />
 </div>
@@ -950,7 +883,6 @@ in posthog we have this thing called the toolbar. The toolbar is a little widget
 All we have to do is give it access to embed into our site. Since we've authorised it for localhost, let's visit our client's website and see what shows up
 -->
 
----
 
 <SlidevVideo  controls>
   <source src="/live-example.mp4" type="video/mp4" />
@@ -961,7 +893,7 @@ You can see we've got a little widget that allows to turn the feature flag on su
 -->
 
 ---
-
+---
 ## Thanks!
 
 Slides 
