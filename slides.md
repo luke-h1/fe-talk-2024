@@ -893,7 +893,7 @@ TODO: reshoot this
 </SlidevVideo>
 
 <!--
-You can see we've got a little widget that allows to turn the feature flag on super easily.
+You can see we've got a widget that allows to turn the feature flag on and off super easily.
 -->
 
 ---
