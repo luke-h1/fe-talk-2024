@@ -65,7 +65,7 @@ layout: two-cols
 <img src="/luke.jpeg" class="rd-full w-28  ml-auto" />
 
 <!--
-Hiya, I'm Luke. I'm a software dev at the mo, currently at sky bet. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after the talk.
+Hiya, I'm Luke. I'm a software dev at the mo, currently at sky bet. I've been a dev for about two years and a QA engineer for about the same amount of time before that. Love anything frontend or devops related. Got my socials there if you wanna continue the conversation or have any questions. During the talk if you have a question, stick your hand up and I'll try to answer it as best as I can. Obviously we'll try to keep conversations succinct so we don't get off track but if they start to get a bit too long, we can always chat after
 -->
 
 ---
@@ -161,7 +161,7 @@ We usually get a feature requested or a business need come thru
 <img src='/refine.gif' width='500' />
 
 <!--
-we then go over that work with a Business analyst or a project manager (business analyst) and estimate how much effort its going to take to implement
+We then go over that work with someone like Business analyst to estimate how much effort its going to take to implement
 -->
 
 ---
