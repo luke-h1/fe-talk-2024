@@ -199,7 +199,7 @@ Once we've built the thing, QA engineers get involved. We usually deploy the fea
 <img src='/deploy-it.gif' width='500' />
 
 <!--
-Last but not least, we release to production and hope nothing blows up
+Last but not least, we release to production
 -->
 
 ---
@@ -210,6 +210,7 @@ Last but not least, we release to production and hope nothing blows up
 
 <img src='/deploy-to-prod.gif' width='500' />
 
+<!-- But what happens when things go south? -->
 
 ---
 ---
