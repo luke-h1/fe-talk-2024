@@ -191,7 +191,7 @@ Once we've built the thing, QA engineers get involved. We usually deploy the fea
 
 ---
 ---
-# Software delivery 
+# Software delivery
 
 ### Release
 
@@ -222,14 +222,14 @@ Last but not least, we release to production
 <img src='/error-graph.png' width='1500' height='1000' />
 
 <!--
-maybe the big feature that works fine in staging blows everything up when you deploy it to production and it ends up causing a load of errors and downtime for our users.
+maybe the big feature that works fine in staging blows everything up when you deploy it to production and it ends up causing a load of errors and downtime for your users.
 -->
 
 ---
 ---
 # Software delivery
 
-## Holidays 🏖  😎️
+## Holidays 🏖 😎️
 
 <img src='/backend.gif' />
 
@@ -278,7 +278,7 @@ and so how most of us deliver software can be quite vulnerable to these things. 
 <img src='/no-nice.gif' />
 
 <!--
-and most importantly this isn't a great experience for users. Our users are going to get frustrated and find another service that does what we do but better
+and most importantly this isn't a great experience for users.
 -->
 
 ---
@@ -296,7 +296,7 @@ layout: two-cols
 clicks: 1
 ---
 
-## Feature flags 🤔
+## What are Feature flags 🤔
 
 <img src="/homer-light-switch.gif" class="w-100 h-100" />
 
