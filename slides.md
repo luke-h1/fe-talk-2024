@@ -208,7 +208,7 @@ Last but not least, we release to production
 
 ### Kaboom ?? 🧨
 
-<img src='/deploy-to-prod.gif' width='500' />
+<img src='/fallout-gif.gif' width='500' />
 
 <!-- But what happens when things go south? -->
 
@@ -567,7 +567,7 @@ export const featureFlags: FeatureFlag[] = [
     enabled: false,
     overrides: {
       name: 'redesign-2024',
-      value: true,
+      value: 'MY_SECRET_ENV_VAR',
     },
   },
 ];
@@ -595,7 +595,7 @@ const useFeatureFlag = (name: string): boolean => {
   const cookie = parseCookie(featureFlag.overrides.name);
 
   const isCookieOverrideSet =
-    cookie.name === featureFlag.overrides.name && cookie.value === 'true';
+    cookie.name === featureFlag.overrides.name && cookie.value === featureFlag.overrides.value;
 
   return featureFlag.enabled || isCookieOverrideSet;
 };
