@@ -390,7 +390,7 @@ A/B testing
 </div>
 
 <!--
-Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this with releasing to a small subsets of users with a/b testing to assert whether user's like the first design or the last design
+Feature flags are a great way to temporarily expose your users to things such as alternate designs, new color schemes to see if that drives higher click rates etc. Here we've got two designs, one with a black button and one with a bright red button. You can combine this  with releasing to a small subsets of users with a/b testing to assert whether user's like the first design or the last design
 -->
 
 ---
@@ -506,23 +506,29 @@ Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all t
 -->
 
 ---
+---
+# Code patterns 
+
+<img src='/code-patterns.gif' />
+
+<!-- Now that we're all a bit familiar with feature flags, we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how you would use that in the real world. We'll also touch a little on a/b testing with this as well. -->
+
+
+---
 clicks: 2
 ---
 
 # Feature flag code patterns
-
-<!-- Now that we're all a bit familiar with feature flags, we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how it would be used in the real world. We'll also touch a little on a/b testing with this as well. These two patterns are building it yourself or using a platform like launchdarkly or posthog. -->
 
 <div v-click="1">
   <Star /> Self hosted
 </div>
 
 <div v-click="2">
-  <Star />Using an SDK/service such as LaunchDarkly or PostHog
+  <Star />Using an SDK/service
 </div>
 
-
-
+<!-- There's generally two patterns to getting feature flags into your app. Building it yourself or using a platform like launchdarkly or posthog. We'll first be looking at a self-hosted example and then we'll move onto using an sdk -->
 ---
 ---
 ## self hosted feature flag
@@ -604,7 +610,7 @@ const useFeatureFlag = (name: string): boolean => {
 </style>
 
 <!--
-And we're gonna create a little hook to use this file in our components. So the first thing we do is import our array of feature flags. Next thing we do is accept a name as a param which will be the name of our feature flag. We try to find the flag that the user passed to the hook. If we can't find it, we return false just to be safe. At this point we've found a feature flag. Our next job is to look for a cookie to see if someone is trying to provide a cookie to view the feature when it's off. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
+And we're gonna create a little hook to use this file in our components. Import our array of feature flags. We accept a name as a param and then we try to find the flag that the user passed to the hook. If we can't find it, we return false. At this point we've found a flag. Our next job is to look for a cookie to see if someone is trying to override the feature flag. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
 
 
 ---
@@ -629,7 +635,7 @@ layout: center
 </style>
 
 <!--
-And then this is how we use that hook. If `newfeature` is true we show the new functionality others we present the existing functionality
+And then this is how we use that hook. If `newfeature` is true we show the new functionality others we present the old functionality
 -->
 
 ---
