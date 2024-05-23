@@ -592,7 +592,7 @@ const useFeatureFlag = (name: string): boolean => {
     return false;
   }
 
-  const cookie = parseCookie(featureFlag.overrides.name);
+  const cookie = getCookie(featureFlag.overrides.name);
 
   const isCookieOverrideSet =
     cookie.name === featureFlag.overrides.name && cookie.value === featureFlag.overrides.value;
