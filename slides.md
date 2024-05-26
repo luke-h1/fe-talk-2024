@@ -861,7 +861,7 @@ Overrides?
 <img src='/hmm.gif' class='w-100' />
 
 <!--
-And last but not least overrides. So we've delivered our feature, client is happy and we have our feature flag and a/b test all working, but our client wants to check it out and make sure everything is to their liking on production before we start percentage releasing. Like we mentioned before a little earlier in the talk, this isn't a problem.
+And last but not least overrides. So we've delivered our feature, client is happy and we have our feature flag and a/b test all working, but our client wants to check it out and make sure everything is to their liking on production before we start percentage releasing.
 -->
 
 ---
@@ -871,34 +871,19 @@ clicks: 1
 Toolbar
 
 <div v-click="1">
-<img src="/toolbar.png" class='w-70' />
+<img src="/tb.png" class='w-130' />
 </div>
 
 <!--
-In posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website.
+In posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website and it allows you to override feature flags on and off dead easily. 
 -->
 
 ---
 ---
-<div class='mt-15'>
-<img src="/auth-urls.png" class='w-750' />
-</div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d1225ed7ebdf4f23a697b61f289ed5b0?sid=a4757ff3-9ff3-4048-b808-8dec8bdc8e5d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 <!--
-All we have to do is give it access to embed into our site. Since we've authorised it for localhost, let's visit our client's website and see what shows up
--->
-
----
----
-
-TODO: reshoot this
-
-<SlidevVideo  controls>
-  <source src="/live-example.mp4" type="video/mp4" />
-</SlidevVideo>
-
-<!--
-You can see we've got a widget that allows to turn the feature flag on and off super easily.
+Enabling this for our site is super easy. All we need to do is give it access to our site and then we can override our feature flags on and off. This is a great way to show stakeholders or engineers the work before we release it to the public
 -->
 
 ---
@@ -912,7 +897,6 @@ Slides
 ### Resources:
 
 Repositories
-- Slides - https://dub.sh/felho + 
 - Redis self-hosted feature flag service - https://dub.sh/rdabtest
 - Posthog example - https://dub.sh/lhabtest
 
