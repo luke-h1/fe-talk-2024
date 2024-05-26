@@ -343,7 +343,7 @@ so this is the typical flow that happens with a feature flag. We have some new f
 <img src="/ab-testing.png" class="w-150" />
 
 <!--
-A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionallity) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature.
+A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionallity) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. more avenues
 -->
 
 ---
