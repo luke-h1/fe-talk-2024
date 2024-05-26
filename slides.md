@@ -647,7 +647,7 @@ layout: center
 <img src="/cat-laptop.gif" class="w-78"  />
 
 <!--
-Now that we know a bit what typical feature flags and a/b tests looks like and how to use it, let's look at a real world demo using an SDK.
+Now that we've looked at self hosting, let's look at using an SDK instead.
 -->
 
 ---
@@ -671,14 +671,14 @@ layout: center
 <img src="/blog-page.png" class="w-120"  />
 
 <!--
-We have a problem. Our client wants to make a grand reveal of their new blog feature on their site. They're projected to get 100k users and everyone is going to love it. But they're not sure if their website can handle the traffic. So our goal with this exercise is to control this new feature with a feature flag and a/b test it to a small percentage of users to make sure this amazing blog isn't going to blow up their site
+We have a problem. Our client wants to make a grand reveal of their new blog page. They're projected to get 100k users and everyone is going to love it. But they're not sure if their website can handle the traffic. So our goal with this exercise is to control this new feature with a feature flag and a/b test it to a small percentage of users to make sure this amazing blog isn't going to blow up their site
 -->
 
 ---
 ---
 ## Creating a feature flag
 
-<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name, and what users we want to release to. This is caleld a release condition in posthog and we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
+<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name, and what users we want to release to. This is called a release condition in posthog and we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
 
 <img src="/create-posthog.png" class="w-350"  />
 
@@ -814,7 +814,7 @@ export default function Home({ posts }: Props) {
 </style>
 
 <!--
-So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value. If the flag is disabled we return a message to the user saying come back at 12pm for the grand opening. Otherwise we return the list of blog posts as we did before.
+So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value
 -->
 
 ---
@@ -843,7 +843,7 @@ And that it, we've now got a feature flag controlling the visibility of our blog
 clicks: 1
 ---
 
-What about a/b testing?
+A/B tests?
 
 <div v-click="1">
 <img src='/release-condition-1.png' class='w-100' />
@@ -861,7 +861,7 @@ Overrides?
 <img src='/hmm.gif' class='w-100' />
 
 <!--
-And last but not least overrides. So we've delivered our feature, client is happy, we have our feature and a/b test all working, but our client wants to check it out and make sure everything is to their liking on production before they release it. Like we mentioned before a little earlier in the talk, this isn't a problem.
+And last but not least overrides. So we've delivered our feature, client is happy and we have our feature flag and a/b test all working, but our client wants to check it out and make sure everything is to their liking on production before we start percentage releasing. Like we mentioned before a little earlier in the talk, this isn't a problem.
 -->
 
 ---
