@@ -234,7 +234,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 <img src='/backend.gif' />
 
 <!--
-Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back
+Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back.
 -->
 
 ---
@@ -323,7 +323,7 @@ const HomePage = () => {
 </style>
 
 <!--
-Feature flags are a way to control the visibility of features in your app. They're a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another. So here we have a boolean `newFeature`. If it's true, we render the new component, otherwise we render the old component. That's all there is to it
+Feature flags are a way to programatically turn features on and off in your app. All a feature flag is at its core is a true or false value. we flip the switch and we get one feature, we flip it back and we get another. Very much like a light switch. So here we have a boolean `newFeature`. If it's true, we render the new component, otherwise we render the old component. That's all there is to it
 -->
 
 ---
@@ -678,10 +678,19 @@ We have a problem. Our client wants to make a grand reveal of their new blog pag
 ---
 ## Creating a feature flag
 
-<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name, and what users we want to release to. This is called a release condition in posthog and we can also release to certain segments of users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
+<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. -->
 
-<img src="/create-posthog.png" class="w-350"  />
+<img src="/create-new-one.png" />
 
+
+---
+---
+## Creating a feature flag
+
+<img src="/condition-set.png" />
+
+
+<!-- and finally what users we want to release to. This is called a release condition in posthog and we can release to users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
 
 ---
 layout: center
@@ -850,7 +859,7 @@ A/B tests?
 </div>
 
 <!--
-We just need to go back to our console in posthog and alter the release condition to the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
+We just need to go back to our dashboar in posthog and alter the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
 -->
 
 ---
@@ -883,7 +892,7 @@ In posthog we have this thing called the toolbar. The toolbar is a little widget
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d1225ed7ebdf4f23a697b61f289ed5b0?sid=a4757ff3-9ff3-4048-b808-8dec8bdc8e5d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 <!--
-Enabling this for our site is super easy. All we need to do is give it access to our site and then we can override our feature flags on and off. This is a great way to show stakeholders or engineers the work before we release it to the public
+Enabling this for our site is super easy. All we need to do is give it access to our site and then we can override our feature flags on and off.
 -->
 
 ---
