@@ -1,6 +1,12 @@
 name: Compress images
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to compress images for"
+        required: true
+        default: "main"
+
 jobs:
   build:
     name: calibreapp/image-actions
@@ -8,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Compress Images
         uses: calibreapp/image-actions@main
