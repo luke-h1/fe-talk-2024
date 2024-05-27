@@ -678,7 +678,9 @@ We have a problem. Our client wants to make a grand reveal of their new blog pag
 ---
 ## Creating a feature flag
 
-<!-- So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. -->
+<!-- 
+So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. 
+-->
 
 <img src="/create-new-one.png" />
 
