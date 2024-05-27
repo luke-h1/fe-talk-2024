@@ -234,7 +234,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 <img src='/backend.gif' />
 
 <!--
-Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back.
+Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back. block prod release pipeline
 -->
 
 ---
