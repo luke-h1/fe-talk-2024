@@ -475,7 +475,7 @@ Segmented rollouts
 Admins, Moderators, certain teams etc.
 
 <!--
-Similar to percentage based rollouts but we are exposing features to users with specific attributes.This could be something like only releasing to paid users, only users in a certain region and things like that
+Similar to percentage based rollouts but we are exposing features to users with specific attributes. This could be something like only releasing to paid users, only users in a certain region and things like that
 -->
 
 ---
