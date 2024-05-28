@@ -503,7 +503,7 @@ Dev tools
 <img src='/fe-sheff-debug.png' />
 
 <!-- 
-With feature flags we can turn on certain tools in production to help us debug issues more easily (e.g. more verbose logging, forcing certain behavior changes in our app like changing the date and time, or forcing errors to see how our app handles them and things like that) 
+With feature flags we can turn on certain tools in production to help us debug issues more easily (e.g. more verbose logging, forcing certain behavior changes in our app like changing the date and time, or forcing errors to see how our app handles them and things like that)
 -->
 
 ---
