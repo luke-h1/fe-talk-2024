@@ -541,14 +541,14 @@ clicks: 2
   "enabled": true,
    "overides": {
      "cookie": "new-feature",
-     "value": "true"
+     "value": process.env.OVERRIDE_SECRET
    },
 }
 
 ```
 
 <!--
-Let's start by thinking about what we want to store. We want a name, some metadata about what it's used for, whether it's enabled and finally some way of manually enabling the feature flag (in this case a cookie).
+Let's start by thinking about what we want to store. We need a name, some metadata about what it's used for, whether it's enabled and finally some way of manually enabling the feature flag (in this case a cookie).
 -->
 
 ---
@@ -567,7 +567,7 @@ export const featureFlags: FeatureFlag[] = [
     enabled: false,
     overrides: {
       name: 'redesign-2024',
-      value: 'MY_SECRET_ENV_VAR',
+      value: process.env.OVERRIDE_SECRET,
     },
   },
 ];
@@ -635,7 +635,7 @@ layout: center
 </style>
 
 <!--
-And then this is how we use that hook. If `newfeature` is true we show the new functionality others we present the old functionality
+And then this is how we use that hook. If `newfeature` is true we show the new functionality otherwise we present the old functionality
 -->
 
 ---
@@ -659,7 +659,7 @@ layout: center
 <img src="/posthog.png" class="w-350"  />
 
 <!--
-To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. it's got generous free tier and other goodies that we're going to take a quick look at
+To achieve this, we'll be using posthog. Posthog is a really good feature flagging and a/b testing platform. it's got generous free tier and other good stuff that we're going to take a quick look at
 -->
 
 ---
@@ -678,12 +678,11 @@ We have a problem. Our client wants to make a grand reveal of their new blog pag
 ---
 ## Creating a feature flag
 
+<img src="/create-new-one.png" />
+
 <!-- 
 So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. 
 -->
-
-<img src="/create-new-one.png" />
-
 
 ---
 ---
@@ -755,8 +754,7 @@ clicks: 2
 
 ## Add the SDK to your project  
 
-<!-- Let's get on with adding posthog to our project. The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables.
--->
+
 
 <div v-click="1">
 ```typescript
@@ -774,7 +772,8 @@ NEXT_PUBLIC_POSTHOG_HOST="your-region"
 ```
 </div>
 
-
+<!-- Let's get on with adding posthog to our project. The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables.
+-->
 ---
 ---
 ## Adding feature flags
