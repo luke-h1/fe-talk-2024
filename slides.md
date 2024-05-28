@@ -443,7 +443,7 @@ Staff / internal releases
 </div>
 
 <!--
-This is one of my favorite things to do with feature flags. Feature flag can be overriden. This means we  can release our work to production under a disabled feature flag and use something such as cookie or a query parameter to let our stakeholders or engineers to take a look at the work without us releasing it to the public. This fixes the issue of having nightmares in production when something acts completely different. Safety net
+This is one of my favorite things to do with feature flags. Feature flag can be overriden. This means we can release our work to production under a disabled feature flag and use something such as cookie or a query parameter to let our stakeholders or engineers to take a look at the work without us releasing it to everyone. This fixes the issue of having nightmares in production when something acts completely different. Safety net
 -->
 
 ---
