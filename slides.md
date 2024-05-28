@@ -237,6 +237,21 @@ maybe the big feature that works fine in staging blows everything up when you de
 Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back. block prod release pipeline.
 -->
 
+
+---
+---
+# Software delivery
+
+## Performance
+
+<img src='/slow-simpsons.gif' />
+
+
+<!-- 
+Maybe you want build a new feature. You deploy it to staging, looks fine, but ends up being really slow in production. 
+-->
+
+
 ---
 layout: two-cols
 clicks: 3
@@ -244,7 +259,7 @@ clicks: 3
 
 # Software delivery 
 
-## Slow
+## Consequences
 
 
 <img src='/slow.gif' width='450' />
@@ -266,7 +281,7 @@ clicks: 3
 </div>
 
 <!--
-and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, or we have performance issues. It all comes crumbling down. We either have to roll back the changes or forward fix
+and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, or we have performance issues. It all comes crumbling down. We have to roll back, forward fix or wait around until our full team is back. 
 -->
 
 ---
@@ -278,7 +293,7 @@ and so how most of us deliver software can be quite vulnerable to these things. 
 <img src='/no-nice.gif' />
 
 <!--
-and most importantly this isn't a great experience for users.
+and this isn't a great experience for users.
 -->
 
 ---
@@ -288,7 +303,7 @@ and most importantly this isn't a great experience for users.
 <img src='/a-solution.gif' />
 
 <!--
-And this is where feature flags can help. They make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
+Fortunately a lot of companies have had these exact problems. And this is where feature flags can help. They make a lot of the problems we've just talked about a lot less likely to happen and provide you with a lot of other cool things that we're gonna talk about
 -->
 
 ---
@@ -476,6 +491,19 @@ Admins, Moderators, certain teams etc.
 
 <!--
 Similar to percentage based rollouts but we are exposing features to users with specific attributes. This could be something like only releasing to paid users, only users in a certain region and things like that
+-->
+
+---
+---
+
+## Benefits 
+
+Dev tools 
+
+<img src='/fe-sheff-debug.png' />
+
+<!-- 
+With feature flags we can turn on certain tools in production to help us debug issues more easily (e.g. more verbose logging, forcing certain behavior changes in our app like changing the date and time, or forcing errors to see how our app handles them and things like that) 
 -->
 
 ---
