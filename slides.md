@@ -128,7 +128,7 @@ clicks: 7
 </div>
 
 <!--
-background on software delivery, quick explanation of feature flags and a/b tests, why you might want to use them, who uses them, how to structure feature flags and a/b tests in your project and then we're gonna finish off with a real world example
+background on software delivery, quick explanation of feature flags and a/b tests, why you might want to use them, what companies use them, how to structure feature flags and a/b tests in your project and then we're gonna finish off with a real world example
 -->
 
 ---
@@ -234,7 +234,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 <img src='/backend.gif' />
 
 <!--
-Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back. block prod release pipeline
+Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back. block prod release pipeline.
 -->
 
 ---
@@ -415,7 +415,7 @@ Error Banners
 </div>
 
 <!--
-maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionsality, bannering your site with a feature flag while you're fixing things would be a great option for that. So our site might normally look like this, and when we enable the error banner flag, our site might look like this
+maybe your app is undergoing maintenance or the backend that you're talking to is broken and you don't want to show users broken functionality, bannering your site with a feature flag while you're fixing things would be a great option for that. So our site might normally look like this, and when we enable the error banner flag, our site might look like this
 -->
 
 ---
