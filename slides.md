@@ -14,7 +14,6 @@ drawings:
 transition: slide-left
 css: unocss
 title: Feature Flags (FE Sheffield May)
- 
 ---
 
 # Feature Flags
@@ -22,6 +21,7 @@ title: Feature Flags (FE Sheffield May)
 <p class='mb-6 text-pink'>A safer way of releasing software</p>
 
 #### Frontend Sheffield May 2024
+
 
 ---
 layout: two-cols
@@ -132,7 +132,6 @@ background on software delivery, quick explanation of feature flags and a/b test
 -->
 
 ---
----
 
 # Software delivery
 
@@ -141,7 +140,7 @@ Before we get into feature flags and why they're great, I wanted to talk a littl
 -->
 
 ---
----
+
 # Software delivery
 
 ## Feature / need
@@ -153,7 +152,7 @@ We usually get a feature requested or a business need come thru
 -->
 
 ---
----
+
 # Software delivery 
 
 ## Refine and estimate
@@ -165,7 +164,7 @@ We then go over that work with someone like a Business analyst to estimate how m
 -->
 
 ---
----
+
 # Software delivery
 
 ## Development happens
@@ -177,7 +176,7 @@ We build the actual thing. We write the code, the unit tests and get people to r
 -->
 
 ---
----
+
 # Software delivery
 
 ### QA / testing happens
@@ -190,7 +189,7 @@ Once we've built the thing, QA engineers get involved. We usually deploy the fea
 -->
 
 ---
----
+
 # Software delivery
 
 ### Release
@@ -203,17 +202,19 @@ Last but not least, we release to production
 -->
 
 ---
----
+
 # Software delivery 
 
 ### Kaboom ?? 🧨
 
 <img src='/fallout-gif.gif' width='500' />
 
-<!-- But what happens when things go south? -->
+<!--
+But what happens when things go south?
+-->
 
 ---
----
+
 # Software delivery 
 
 
@@ -226,7 +227,7 @@ maybe the big feature that works fine in staging blows everything up when you de
 -->
 
 ---
----
+
 # Software delivery
 
 ## Holidays 🏖 😎️
@@ -237,20 +238,17 @@ maybe the big feature that works fine in staging blows everything up when you de
 Or maybe it's a problem that's more subtle. Your backend developer goes on holiday for 3 weeks and all the frontend UI updates you've done are ready to go to production but the backend work isn't done. So instead of releasing it, you have to wait until they're back. block prod release pipeline.
 -->
 
+---
 
----
----
 # Software delivery
 
 ## Performance
 
 <img src='/slow-simpsons.gif' />
 
-
-<!-- 
-Maybe you want build a new feature. You deploy it to staging, looks fine, but ends up being really slow in production. 
+<!--
+Maybe you want build a new feature. You deploy it to staging, looks fine, but ends up being really slow in production.
 -->
-
 
 ---
 layout: two-cols
@@ -281,11 +279,11 @@ clicks: 3
 </div>
 
 <!--
-and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, or we have performance issues. It all comes crumbling down. We have to roll back, forward fix or wait around until our full team is back. 
+and so how most of us deliver software can be quite vulnerable to these things. If any of the aformented things goes wrong, our full team is unavailable, our environments act different, or we have performance issues. It all comes crumbling down. We have to roll back, forward fix or wait around until our full team is back.
 -->
 
 ---
----
+
 # Software delivery
 
 ## Users
@@ -297,7 +295,7 @@ and this isn't a great experience for users.
 -->
 
 ---
----
+
 # A better way
 
 <img src='/a-solution.gif' />
@@ -342,7 +340,7 @@ Feature flags are a way to programatically turn features on and off in your app.
 -->
 
 ---
----
+
 # Feature flags 
 
 <img src="/ff-flow.png" class='w-350' />
@@ -352,16 +350,15 @@ so this is the typical flow that happens with a feature flag. We have some new f
 -->
 
 ---
----
+
 # what is a/b testing?
 
 <img src="/ab-testing.png" class="w-150" />
 
 <!--
-A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionallity) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. more avenues
+A/B testing is a way to expose your users to two different versions of a feature. We conduct an a/b test by running an experiment and that usually involves two variants, a control group (user has the existing functionality) and an experiment group (user sees the new feature). In the context of feature flags and the scope of this talk, we're just using a/b testing to control what percentage of users see our new feature. more avenues
 -->
 
----
 ---
 
 ## a/b test flow
@@ -373,7 +370,7 @@ So as a quick example, this is the typical flow of a feature flag paired with a/
 -->
 
 ---
----
+
 ## Benefits
 
 <img src="/fargo.gif" class="m-2 w-100" />
@@ -494,7 +491,6 @@ Similar to percentage based rollouts but we are exposing features to users with 
 -->
 
 ---
----
 
 ## Benefits 
 
@@ -502,7 +498,7 @@ Dev tools
 
 <img src='/fe-sheff-debug.png' />
 
-<!-- 
+<!--
 With feature flags we can turn on certain tools in production to help us debug issues more easily (e.g. more verbose logging, forcing certain behavior changes in our app like changing the date and time, or forcing errors to see how our app handles them and things like that)
 -->
 
@@ -534,13 +530,14 @@ Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all t
 -->
 
 ---
----
+
 # Code patterns 
 
 <img src='/code-patterns.gif' />
 
-<!-- Now that we're all a bit familiar with feature flags, we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how you would use that in the real world. We'll also touch a little on a/b testing with this as well. -->
-
+<!--
+Now that we're all a bit familiar with feature flags, we're going to go over the two primary patterns for creating feature flags and then we're going to look at a quick demo on how you would use that in the real world. We'll also touch a little on a/b testing with this as well.
+-->
 
 ---
 clicks: 2
@@ -556,9 +553,12 @@ clicks: 2
   <Star />Using an SDK/service
 </div>
 
-<!-- There's generally two patterns to getting feature flags into your app. Building it yourself or using a platform like launchdarkly or posthog. We'll first be looking at a self-hosted example and then we'll move onto using an sdk -->
+<!--
+There's generally two patterns to getting feature flags into your app. Building it yourself or using a platform like launchdarkly or posthog. We'll first be looking at a self-hosted example and then we'll move onto using an sdk
+-->
+
 ---
----
+
 ## self hosted feature flag
 
 ```ts{2|3|4|5|6,7,8,9}
@@ -606,7 +606,7 @@ To emphaize this a bit more, this is just a central file that lives somewhere in
 -->
 
 ---
----
+
 ## Self hosted
 
 ```typescript{2|4|5|7,8,9|11|13,14|16}
@@ -638,8 +638,8 @@ const useFeatureFlag = (name: string): boolean => {
 </style>
 
 <!--
-And we're gonna create a little hook to use this file in our components. Import our array of feature flags. We accept a name as a param and then we try to find the flag that the user passed to the hook. If we can't find it, we return false. At this point we've found a flag. Our next job is to look for a cookie to see if someone is trying to override the feature flag. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set -->
-
+And we're gonna create a little hook to use this file in our components. Import our array of feature flags. We accept a name as a param and then we try to find the flag that the user passed to the hook. If we can't find it, we return false. At this point we've found a flag. Our next job is to look for a cookie to see if someone is trying to override the feature flag. If the cookies name and value match what we set in the override object, we store the boolean in isCookieOverrideSet. and then we just return an iffy statement that returns true if the feature flag is enabled or if the override is set
+-->
 
 ---
 layout: center
@@ -703,23 +703,24 @@ We have a problem. Our client wants to make a grand reveal of their new blog pag
 -->
 
 ---
----
+
 ## Creating a feature flag
 
 <img src="/create-new-one.png" />
 
-<!-- 
-So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. 
+<!--
+So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag.
 -->
 
 ---
----
+
 ## Creating a feature flag
 
 <img src="/condition-set.png" />
 
-
-<!-- and finally what users we want to release to. This is called a release condition in posthog and we can release to users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication -->
+<!--
+and finally what users we want to release to. This is called a release condition in posthog and we can release to users based on lots of things built into posthog such as browser version, region or something unique such as their user ID if you have authentication
+-->
 
 ---
 layout: center
@@ -800,10 +801,12 @@ NEXT_PUBLIC_POSTHOG_HOST="your-region"
 ```
 </div>
 
-<!-- Let's get on with adding posthog to our project. The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables.
+<!--
+Let's get on with adding posthog to our project. The first thing we need to do, is add the posthog sdk to our project. All we do is install the dependency, and add our API keys to environment variables.
 -->
+
 ---
----
+
 ## Adding feature flags
 
 ```typescript{1|4|6,7,8,9,10,11,12,13,14|16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34}
@@ -892,7 +895,7 @@ We just need to go back to our dashboar in posthog and alter the amount of users
 -->
 
 ---
----
+
 Overrides?
 
 
@@ -913,11 +916,11 @@ Toolbar
 </div>
 
 <!--
-In posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website and it allows you to override feature flags on and off dead easily. 
+In posthog we have this thing called the toolbar. The toolbar is a little widget that you embed in your website and it allows you to override feature flags on and off dead easily.
 -->
 
 ---
----
+
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/d1225ed7ebdf4f23a697b61f289ed5b0?sid=a4757ff3-9ff3-4048-b808-8dec8bdc8e5d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 <!--
@@ -925,7 +928,7 @@ Enabling this for our site is super easy. All we need to do is give it access to
 -->
 
 ---
----
+
 ## Thanks!
 
 Slides 
