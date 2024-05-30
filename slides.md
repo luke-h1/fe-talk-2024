@@ -860,7 +860,7 @@ export default function Home({ posts }: Props) {
 
 <!--
 So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value. If it's not enabled or the API call fails we show a message telling users to come back at 12
-
+-->
 ---
 layout: comparison
 clicks: 2
@@ -894,7 +894,7 @@ A/B tests?
 </div>
 
 <!--
-We just need to go back to our dashboar in posthog and alter the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
+We just need to go back to our dashboard in posthog and alter the amount of users we want release to. It does this by instrumenting your application and working out roughly how many users are using your website. One caveat to this is that from what I've heard it takes a few days to work that out so you might not get the most accurate results straight away.
 -->
 
 ---
