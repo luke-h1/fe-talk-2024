@@ -311,7 +311,7 @@ clicks: 1
 
 ## What are Feature flags 🤔
 
-<img src="/homer-light-switch.gif" class="w-100 h-100" />
+<img src="/homer-light-switch.gif" class="w-80 h-80" />
 
 
 ::right::
@@ -330,8 +330,8 @@ const HomePage = () => {
 
 <style>
   .slidev-layout {
-    --slidev-code-font-size: 0.7rem;
-    --slidev-code-line-height: calc(0.7rem * 1.5);
+    --slidev-code-font-size: 0.75rem;
+    --slidev-code-line-height: calc(0.75rem * 1.5);
   }
 </style>
 
@@ -504,6 +504,7 @@ With feature flags we can turn on certain tools in production to help us debug i
 
 ---
 layout: comparison
+clicks: 1
 ---
 
 ## Who uses them?
@@ -516,6 +517,8 @@ layout: comparison
   <img src='/spotify-logo-1y.jpg' class="m-1 w-20" />
 </div>
 
+<div v-click='1'>
+
 <ul class='mt-8'>
 <li>
    Risk mitigation 💰
@@ -524,6 +527,7 @@ layout: comparison
    Small rollouts 👩‍🔬
 </li>
 </ul>
+</div>
 
 <!--
 Feature flags are very prevelant in the industry. Airbnb, GitHub, Netflix, all the big dogs. It helps them reduce risk and saves them lots of money. For a lot of these companies 1 - 2 minutes of service disruption means lots of money gets lost and most importantly people's trust in a product. A lot of these companies run their projects in a microservice style and it can sometimes be hard to judge how changes affect their application as a whole. That's why using feature flags paired with a/b tests is a no brainer for them.
@@ -602,7 +606,7 @@ export const featureFlags: FeatureFlag[] = [
 ```
 
 <!--
-To emphaize this a bit more, this is just a central file that lives somewhere in your codebase we're not going to be making any api calls or anything like that. We have only have one feature flag here, but you could have as many as you want in this array.
+To emphaize this a bit more, this is just a central file that lives somewhere in your codebase we're not going to be making any api calls or anything like that. We have an array of feature flags here that we're exporing and this just lives in our src folder
 -->
 
 ---
@@ -632,8 +636,8 @@ const useFeatureFlag = (name: string): boolean => {
 
 <style>
   .slidev-layout {
-    --slidev-code-font-size: 0.6rem;
-    --slidev-code-line-height: calc(0.6rem * 1.5);
+    --slidev-code-font-size: 0.87rem;
+    --slidev-code-line-height: calc(0.87rem * 1.5);
   }
 </style>
 
