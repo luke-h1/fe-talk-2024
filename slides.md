@@ -710,10 +710,10 @@ We have a problem. Our client wants to make a grand reveal of their new blog pag
 
 ## Creating a feature flag
 
-<img src="/create-new-one.png" />
+<img src="/create-new-one.png" class='h-90' />
 
 <!--
-So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag.
+So to create a feature flag in posthog, it's really simple. We need a key (this is what will be used in our frontend code), a descriptive name and whether to enable the feature flag. I've not included it here but you can schedule when you want the feature flag to be enabled and disabled
 -->
 
 ---
@@ -727,7 +727,7 @@ and finally what users we want to release to. This is called a release condition
 -->
 
 ---
-layout: center
+layout: section
 ---
 
 The current state of our client's codebase
