@@ -695,10 +695,10 @@ To achieve this, we'll be using posthog. Posthog is a really good feature flaggi
 -->
 
 ---
-layout: center
+layout: quote
 ---
 
-## Our client wants an engineering blog to be added to their site
+# Our client wants an engineering blog to be added to their site
 
 <img src="/blog-page.png" class="w-120"  />
 
@@ -859,8 +859,7 @@ export default function Home({ posts }: Props) {
 </style>
 
 <!--
-So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value
--->
+So the first thing we need to do is to import the `useFeatureFlagEnabled` hook from posthog. And this does exactly what it's name says. We pass it the feature flag key that we created earlier and it will return a true or false value. If it's not enabled or the API call fails we show a message telling users to come back at 12
 
 ---
 layout: comparison
@@ -891,7 +890,7 @@ clicks: 1
 A/B tests?
 
 <div v-click="1">
-<img src='/release-condition-1.png' class='w-100' />
+<img src='/release-condition-1.png' class='w-300' />
 </div>
 
 <!--
