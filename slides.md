@@ -935,7 +935,8 @@ Enabling this for our site is super easy. All we need to do is give it access to
 ## Thanks!
 
 Slides 
-- https://feature-flags-24.talks.lhowsam.com
+- https://feature-flags-24.talks.lhowsam.com 
+- https://feature-flags-24.talks.lhowsam.com/presenter
 
 
 ### Resources:
