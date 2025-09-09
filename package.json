@@ -25,7 +25,7 @@
     "@types/node": "^18.15.11",
     "markdown-it": "^13.0.1",
     "shiki": "^0.14.1",
-    "vite": "^4.2.1"
+    "vite": "^5.4.20"
   },
   "pnpm": {},
   "resolutions": {
