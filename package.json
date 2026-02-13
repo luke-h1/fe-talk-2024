@@ -23,7 +23,7 @@
     "@iconify-json/mdi": "^1.1.50",
     "@types/markdown-it-attrs": "^4.1.0",
     "@types/node": "^18.15.11",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.1.1",
     "shiki": "^0.14.1",
     "vite": "^4.2.1"
   },
